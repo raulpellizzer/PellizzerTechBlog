@@ -9,18 +9,27 @@
         <li class="nav-item active">
           <a class="nav-link" data-toggle="tooltip" data-placement="top" title="Home Page" href="{{ url('/') }}">Home <span class="sr-only">(current)</span></a>
         </li>
+
         <li class="nav-item">
-          <a class="nav-link" data-toggle="tooltip" data-placement="top" title="About Page" href="{{ url('/about') }}">About</a>
+          <a class="nav-link" data-toggle="tooltip" data-placement="top" title="Access Blog" href="{{ url('/blog') }}">Blog</a>
         </li>
+
         <li class="nav-item">
-            <a class="nav-link" data-toggle="tooltip" data-placement="top" title="Contact Page" href="{{ url('/contact') }}">Contact</a>
+          <a class="nav-link" data-toggle="tooltip" data-placement="top" title="Access Portfolio" href="{{ url('/portfolio') }}">Portfolio</a>
         </li>
+
         <li class="nav-item">
             <a class="nav-link" data-toggle="tooltip" data-placement="top" title="Login to Website" href="{{ url('/login') }}">Login</a>
         </li>
+        
         <li class="nav-item">
             <a class="nav-link" data-toggle="tooltip" data-placement="top" title="Register New User" href="{{ url('/register') }}">Register</a>
         </li>
+        
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tooltip" data-placement="top" title="About Page" href="{{ url('/about') }}">About</a>
+        </li>
+      
       </ul>
     </div>
 </nav>

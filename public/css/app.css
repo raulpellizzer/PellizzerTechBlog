@@ -1,11 +1,8 @@
 .jumbotron {
+    background-color: rgb(248, 245, 245);
     height: 26%;
     width: 100%;
 }
-
-/* .col-md-3 {
-    border: solid 1px black;
-} */
 
 .main-header-text {
     font-family: 'Inconsolata', monospace;
@@ -37,6 +34,7 @@
 }
 
 footer {
+    background-color: rgb(248, 245, 245);
     position: fixed;
     left: 0;
     bottom: 0;

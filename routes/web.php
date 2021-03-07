@@ -13,24 +13,36 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 /*
     Render Home View
 */
 Route::view('/', 'home');
+
 
 /*
     Render About View
 */
 Route::view('/about', 'about');
 
-Route::get('/contact', function() {
-    return 'Contact Route';
+
+/*
+    Render Login View
+*/
+Route::view('/login', 'login');
+
+
+/*
+    Render Register View
+*/
+Route::view('/register', 'register');
+
+
+Route::get('/blog', function() {
+    return 'Blog Route';
 });
 
-Route::get('/login', function() {
-    return 'Login Route';
-});
 
-Route::get('/register', function() {
-    return 'Register Route';
+Route::get('/portfolio', function() {
+    return 'Portfolio Route';
 });
