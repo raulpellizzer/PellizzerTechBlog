@@ -1,0 +1,44 @@
+.jumbotron {
+    height: 26%;
+    width: 100%;
+}
+
+/* .col-md-3 {
+    border: solid 1px black;
+} */
+
+.main-header-text {
+    font-family: 'Inconsolata', monospace;
+}
+
+.regular-text {
+    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'Inconsolata', monospace;
+    font-family: 'Jura', sans-serif;
+    font-family: 'Kavivanar', cursive;
+    font-family: 'Sanchez', serif;
+}
+
+.hr-customized {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
+.custom-margin-left {
+    padding-left: 5%;
+}
+
+.rounded-circle{
+    border:1px solid;
+    border-radius:50%;
+    width:50%;
+    height:60%;
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
