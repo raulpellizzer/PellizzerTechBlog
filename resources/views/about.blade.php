@@ -5,6 +5,7 @@
 
 <br><br>
 
+{{-- Top Portion --}}
 <div class="container">
     <div class="row text-center">
       <div class="col-sm">
@@ -32,9 +33,9 @@
       </div>
     </div>
 </div>
-
 <hr>
 
+{{-- Bottom Portion --}}
 <div class="row custom-margin-left text-center mt-5">
     <div class="col-md-3">
         <p class="main-header-text"><strong>About the website</strong></p>

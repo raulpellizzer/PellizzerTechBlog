@@ -38,6 +38,12 @@ Route::view('/login', 'login');
 Route::view('/register', 'register');
 
 
+/*
+    Render Contact View
+*/
+Route::view('/contact', 'contact');
+
+
 Route::get('/blog', function() {
     return 'Blog Route';
 });

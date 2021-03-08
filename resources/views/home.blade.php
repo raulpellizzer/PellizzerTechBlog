@@ -4,7 +4,7 @@
 <x-main-nav/>
 
 {{-- Jumbotron --}}
-<x-jumbotron/>
+<x-jumbotron type="home"/>
 
 {{-- Carousel --}}
 <x-carousel/>

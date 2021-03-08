@@ -29,6 +29,10 @@
         <li class="nav-item">
           <a class="nav-link" data-toggle="tooltip" data-placement="top" title="About Page" href="{{ url('/about') }}">About</a>
         </li>
+
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tooltip" data-placement="top" title="Contact Page" href="{{ url('/contact') }}">Contact</a>
+        </li>
       
       </ul>
     </div>

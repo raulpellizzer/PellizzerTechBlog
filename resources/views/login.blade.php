@@ -3,6 +3,7 @@
 {{-- NavBar --}}
 <x-main-nav/>
 
+{{-- Login Form --}}
 <p class="main-header-text text-center mt-5"><strong>Sign In</strong></p>
 <div class="container-fluid">
     <div class="row justify-content-center align-items-center">
