@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,13 +36,25 @@ Route::view('/login', 'login');
 /*
     Render Register View
 */
-Route::view('/register', 'register');
+Route::view('/register', 'register')->name('register');
 
 
 /*
     Render Contact View
 */
 Route::view('/contact', 'contact');
+
+
+
+
+
+/*
+    /users route: Create new user
+*/
+Route::post(
+    '/users', 
+    [UserController::class,'create']
+    )->name('createUser');
 
 
 Route::get('/blog', function() {

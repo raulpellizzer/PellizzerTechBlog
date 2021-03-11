@@ -40,3 +40,7 @@ footer {
     bottom: 0;
     width: 100%;
 }
+
+.padding-left {
+    padding-left: 5%;
+}
