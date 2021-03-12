@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -64,5 +65,18 @@ class User extends Authenticatable
         }
         
         return $validation;
+    }
+
+    /**
+     * Checks if given username or email already exists in the application
+     *
+     * @param  string  $userName
+     * @param  string  $email
+     * @return boolean
+     */
+    public function checkUserInDB($userName, $email)
+    {
+        $users = DB::select('select * from users where name = :name or email = :email', ['name' => $userName, 'email' => $email]);
+        return sizeof($users) > 0 ? false : true;
     }
 }

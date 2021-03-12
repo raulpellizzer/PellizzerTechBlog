@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -44,13 +43,19 @@ class UserController extends Controller
             $validation = $user->validateData($userName, $email, $password, $confPassword);
 
             if ($validation) {
-                $user->name     = $userName ;
-                $user->password = $password;
-                $user->email    = $email;
-                $user->save();
-                return redirect()->route('register')->with('status', 'success');
+                $validation = $user->checkUserInDB($userName, $email);
+
+                if ($validation) {
+                    $user->name     = $userName ;
+                    $user->password = $password;
+                    $user->email    = $email;
+                    $user->save();
+                    return redirect()->route('register')->with('registerStatus', 'success');
+                } else
+                    return redirect()->route('register')->with('registerStatus', 'userExists');
+
             } else
-                return redirect()->route('register')->with('status', 'error');
+                return redirect()->route('register')->with('registerStatus', 'invalidCredentials');
         }
     }
 

@@ -5,19 +5,27 @@
 
 <p class="main-header-text text-center mt-5"><strong>Register and receive all notifications</strong></p>
 
-{{-- Check session 'status' var --}}
-@if (session('status') === "error")
+{{-- Check session 'registerStatus' var --}}
+@if (session('registerStatus') === "success")
   <div class="container">
-    <div class="alert alert-danger text-center regular-text" role="alert">
-      Invalid Credentials
+    <div class="alert alert-success text-center regular-text" role="alert">
+      User successfully registered!
     </div>
   </div>
 @endif
 
-@if (session('status') === "success")
+@if (session('registerStatus') === "invalidCredentials")
   <div class="container">
-    <div class="alert alert-success text-center regular-text" role="alert">
-      User successfully registered!
+    <div class="alert alert-danger text-center regular-text" role="alert">
+      Invalid credentials
+    </div>
+  </div>
+@endif
+
+@if (session('registerStatus') === "userExists")
+  <div class="container">
+    <div class="alert alert-danger text-center regular-text" role="alert">
+      Pick a different username or email
     </div>
   </div>
 @endif
@@ -69,7 +77,7 @@
       <p class="regular-text">> All fields must not be empty</p>
       <p class="regular-text">> Your username must have at least 07 characters</p>
       <p class="regular-text">> Your password must have at least 08 characters</p>
-      <p class="regular-text">> Your password must contain at least one upper case ('A', 'B', ...)</p>
+      <p class="regular-text">> Your password must contain at least one upper case letter ('A', 'B', ...)</p>
       <p class="regular-text">> Your password must contain at least one special character ([]!@#$%&*()<>{})</p>
     </div>
 </div>
