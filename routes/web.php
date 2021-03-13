@@ -45,6 +45,12 @@ Route::view('/register', 'register')->name('register');
 Route::view('/contact', 'contact');
 
 
+/*
+    Render Control Panel View
+*/
+Route::view('/controlpanel', 'controlpanel')->middleware('auth');
+
+
 
 
 

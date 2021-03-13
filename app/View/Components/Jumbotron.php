@@ -37,6 +37,10 @@ class Jumbotron extends Component
             $this->display      = "Contact Us";
             $this->paragraphOne = "Got any questions, suggestions or comments? Please, feel free to contact us! We will be happy to hear from you.";
             $this->paragraphTwo = "We will reply as soon as possible.";
+        } else if ($this->type == "controlpanel") {
+            $this->display      = "Pellizzer Tech Blog - Control Panel";
+            $this->paragraphOne = "Manage your users, posts and all your application from here. ";
+            $this->paragraphTwo = "Remember: With great powers comes great responsibility";
         }
     }
 
