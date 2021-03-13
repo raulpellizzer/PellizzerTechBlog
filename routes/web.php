@@ -52,9 +52,18 @@ Route::view('/contact', 'contact');
     /users route: Create new user
 */
 Route::post(
-    '/users', 
+    '/users',
     [UserController::class,'create']
     )->name('createUser');
+
+
+/*
+    /login/authenticate route: Authenticate user
+*/
+Route::post(
+    '/login/authenticate',
+    [UserController::class,'authenticate']
+    )->name('authenticateUser');
 
 
 Route::get('/blog', function() {

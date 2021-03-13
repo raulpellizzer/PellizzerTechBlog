@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\Crypt;
 
@@ -46,19 +47,20 @@ class User extends Authenticatable
     /**
      * Validate if data provided by user is valid for registration
      *
-     * @param  string  $userName
-     * @param  string  $email
-     * @param  string  $password
-     * @param  string  $confPassword
+     * @param  array  $credentials
      * @return boolean
      */
-    public function validateData($userName, $email, $password, $confPassword)
+    public function validateData($credentials)
     {
         $validation = false;
+        $userName     = $credentials['userNameRegister'];
+        $password     = $credentials['passwordRegister'];
+        $confPassword = $credentials['confPasswordRegister'];
+        $email        = $credentials['email'];
 
         if (trim($userName) != "" && trim($email) != "" && trim($password) != "") {
             if (strlen($userName) >= 7 && strlen($password) >= 8 && $password === $confPassword) {
-                if (preg_match('/[!@#$%&*()<>{}[\]]/', $password)) {
+                if (preg_match('/[!@#$%&*()<>{}[\]-]/', $password)) {
                     if (preg_match('/[A-Z]/', $password))
                         $validation = true;
                 }
@@ -89,17 +91,25 @@ class User extends Authenticatable
      */
     public function encryptPassword($password)
     {
-        return Crypt::encryptString($password);
+        return bcrypt($password);
     }
 
     /**
-     * Decrypts string
+     * Validate if data provided by user is valid for registration
      *
-     * @param  string  $encryptedPassword
-     * @return string
+     * @param  array  $credentials
+     * @return boolean
      */
-    public function decryptPassword($encryptedPassword)
+    public function authenticate($credentials)
     {
-        return Crypt::decryptString($encryptedPassword);
+
+        // TO DO: Addapt, return bool ...
+        if (Auth::attempt($credentials)) {
+            echo "User authenticated!";
+            die;
+        } else {
+            echo "User NOT authenticated!";
+            die;
+        }
     }
 }

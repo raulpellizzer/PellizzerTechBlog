@@ -8,17 +8,17 @@
 <div class="container-fluid">
     <div class="row justify-content-center align-items-center">
         <div class="col col-sm-6 col-md-6 col-lg-4 col-xl-3">
-            <form>
+            <form action="{{ url('/login/authenticate') }}" method="POST">
                 @csrf
 
                 <div class="form-group">
-                  <label class="regular-text" for="login">Login</label>
-                  <input type="text" class="form-control" id="login" name="login" placeholder="Username">
+                  <label class="regular-text" for="name">Login</label>
+                  <input type="text" class="form-control" id="name" name="name" placeholder="Username">
                 </div>
         
                 <div class="form-group">
-                  <label class="regular-text" for="loginpassword">Password</label>
-                  <input type="password" class="form-control" id="loginpassword" name="password" placeholder="Password">
+                  <label class="regular-text" for="password">Password</label>
+                  <input type="password" class="form-control" id="password" name="password" placeholder="Password">
                 </div>
         
                 <div class="col-sm d-flex justify-content-center">

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -34,22 +35,18 @@ class UserController extends Controller
     {
         if ($request->method() === "POST") {
             $user         = new User;
-
-            $userName     = $request->userNameRegister;
-            $password     = $request->passwordRegister;
-            $confPassword = $request->confPasswordRegister;
-            $email        = $request->email;
-
-            $validation = $user->validateData($userName, $email, $password, $confPassword);
+            $credentials  = $request->only('userNameRegister', 'passwordRegister', 'confPasswordRegister', 'email');
+            $validation   = $user->validateData($credentials);
 
             if ($validation) {
-                $validation = $user->checkUserInDB($userName, $email);
+                $validation = $user->checkUserInDB($credentials['userNameRegister'], $credentials['email']);
 
                 if ($validation) {
-                    $encryptedPassword = $user->encryptPassword($password);
-                    $user->name        = $userName;
+                    $encryptedPassword = $user->encryptPassword($credentials['passwordRegister']);
+
+                    $user->name        = $credentials['userNameRegister'];
                     $user->password    = $encryptedPassword;
-                    $user->email       = $email;
+                    $user->email       = $credentials['email'];
                     $user->save();
                     return redirect()->route('register')->with('registerStatus', 'success');
                 } else
@@ -58,6 +55,20 @@ class UserController extends Controller
             } else
                 return redirect()->route('register')->with('registerStatus', 'invalidCredentials');
         }
+    }
+
+    public function authenticate(Request $request)
+    {
+        if ($request->method() === "POST") {
+            $request->session()->regenerate();
+
+            $user         = new User;
+            $credentials  = $request->only('name', 'password');
+            $user->authenticate($credentials);
+
+            // TO DO: Redirect or do something, login message ...
+        }
+
     }
 
     /**

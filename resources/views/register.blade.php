@@ -78,7 +78,7 @@
       <p class="regular-text">> Your username must have at least 07 characters</p>
       <p class="regular-text">> Your password must have at least 08 characters</p>
       <p class="regular-text">> Your password must contain at least one upper case letter ('A', 'B', ...)</p>
-      <p class="regular-text">> Your password must contain at least one special character ([]!@#$%&*()<>{})</p>
+      <p class="regular-text">> Your password must contain at least one special character among these ( []!@#$%&*-()<>{} )</p>
     </div>
 </div>
 
