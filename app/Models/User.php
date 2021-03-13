@@ -104,4 +104,16 @@ class User extends Authenticatable
     {
         return Auth::attempt($credentials) ? true : false;
     }
+
+    /**
+     * Check if the authenticated user has admin privileges
+     *
+     * @param  string  $email
+     * @return integer
+     */
+    public function isAdmin($email)
+    {
+        $privilege = DB::select('select isAdmin from users where email = :email', ['email' => $email]);
+        return $privilege[0]->isAdmin;
+    }
 }

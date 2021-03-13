@@ -40,5 +40,16 @@
           <a class="nav-link" data-toggle="tooltip" data-placement="top" title="Contact Page" href="{{ url('/contact') }}">Contact</a>
         </li>
       </ul>
+
+      @if (Auth::check())
+        @if (auth()->user()->isAdmin(Auth::user()->email))
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tooltip" data-placement="top" title="Control Panel" href="{{ url('/#') }}">Control Panel</a>
+            </li>
+          </ul>
+        @endif
+      @endif
+
     </div>
 </nav>
