@@ -46,9 +46,10 @@ class UserController extends Controller
                 $validation = $user->checkUserInDB($userName, $email);
 
                 if ($validation) {
-                    $user->name     = $userName ;
-                    $user->password = $password;
-                    $user->email    = $email;
+                    $encryptedPassword = $user->encryptPassword($password);
+                    $user->name        = $userName;
+                    $user->password    = $encryptedPassword;
+                    $user->email       = $email;
                     $user->save();
                     return redirect()->route('register')->with('registerStatus', 'success');
                 } else

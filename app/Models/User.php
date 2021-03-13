@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Crypt;
 
 class User extends Authenticatable
 {
@@ -78,5 +79,27 @@ class User extends Authenticatable
     {
         $users = DB::select('select * from users where name = :name or email = :email', ['name' => $userName, 'email' => $email]);
         return sizeof($users) > 0 ? false : true;
+    }
+
+    /**
+     * Encrypts string
+     *
+     * @param  string  $password
+     * @return string
+     */
+    public function encryptPassword($password)
+    {
+        return Crypt::encryptString($password);
+    }
+
+    /**
+     * Decrypts string
+     *
+     * @param  string  $encryptedPassword
+     * @return string
+     */
+    public function decryptPassword($encryptedPassword)
+    {
+        return Crypt::decryptString($encryptedPassword);
     }
 }
