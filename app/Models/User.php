@@ -106,6 +106,18 @@ class User extends Authenticatable
     }
 
     /**
+     * Check if user account is active
+     *
+     * @param  array  $credentials
+     * @return boolean
+     */
+    public function isUserActive($credentials)
+    {
+        $status = DB::select('select active from users where name = :name', ['name' => $credentials['name']]);
+        return $status;
+    }
+
+    /**
      * Check if the authenticated user has admin privileges
      *
      * @param  string  $email

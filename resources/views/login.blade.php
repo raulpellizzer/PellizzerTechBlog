@@ -18,6 +18,17 @@
   </div>
 @endif
 
+@if (session('authStatus') === "disabledUser")
+  <div class="container">
+    <div class="alert alert-danger text-center regular-text fade show alert-dismissible" role="alert">
+      This user account has been disabled
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div>
+@endif
+
 <div class="container-fluid">
     <div class="row justify-content-center align-items-center">
         <div class="col col-sm-6 col-md-6 col-lg-4 col-xl-3">

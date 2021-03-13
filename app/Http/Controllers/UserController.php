@@ -73,9 +73,14 @@ class UserController extends Controller
             $credentials  = $request->only('name', 'password');
             $auth         = $user->authenticate($credentials);
 
-            if ($auth)
-                return redirect()->route('home')->with('authStatus', 'success');
-            else
+            if ($auth) {
+                $userIsActive = $user->isUserActive($credentials);
+
+                if ($userIsActive[0]->active)
+                    return redirect()->route('home')->with('authStatus', 'success');
+                else
+                    return redirect()->route('login')->with('authStatus', 'disabledUser');
+            } else
                 return redirect()->route('login')->with('authStatus', 'invalidCredentials');
         }
     }
