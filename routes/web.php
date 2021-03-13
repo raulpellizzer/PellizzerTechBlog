@@ -66,6 +66,12 @@ Route::post(
     )->name('authenticateUser');
 
 
+/*
+    /logout route: Logs user out of the application
+*/
+Route::get('/logout', [UserController::class,'logout']);
+
+
 Route::get('/blog', function() {
     return 'Blog Route';
 });

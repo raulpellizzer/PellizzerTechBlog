@@ -18,10 +18,16 @@
           <a class="nav-link" data-toggle="tooltip" data-placement="top" title="Access Portfolio" href="{{ url('/portfolio') }}">Portfolio</a>
         </li>
 
-        <li class="nav-item">
+        @if(!Auth::check())
+          <li class="nav-item">
             <a class="nav-link" data-toggle="tooltip" data-placement="top" title="Login to Website" href="{{ url('/login') }}">Login</a>
-        </li>
-        
+          </li>
+        @else
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tooltip" data-placement="top" title="Login to Website" href="{{ url('/logout') }}">Logout</a>
+          </li>
+        @endif
+
         <li class="nav-item">
             <a class="nav-link" data-toggle="tooltip" data-placement="top" title="Register New User" href="{{ url('/register') }}">Register</a>
         </li>
@@ -33,7 +39,6 @@
         <li class="nav-item">
           <a class="nav-link" data-toggle="tooltip" data-placement="top" title="Contact Page" href="{{ url('/contact') }}">Contact</a>
         </li>
-      
       </ul>
     </div>
 </nav>

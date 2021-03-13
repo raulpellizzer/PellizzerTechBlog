@@ -80,7 +80,13 @@ class UserController extends Controller
         }
     }
 
-    // To be implemented
+    /**
+     * Logs user out
+     * 
+     * @param request request data
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function logout(Request $request)
     {
         Auth::logout();
