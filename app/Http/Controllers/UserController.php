@@ -74,7 +74,7 @@ class UserController extends Controller
             $auth         = $user->authenticate($credentials);
 
             if ($auth) {
-                $userIsActive = $user->isUserActive($credentials);
+                $userIsActive = $user->isUserActive($credentials['name']);
 
                 if ($userIsActive[0]->active)
                     return redirect()->route('home')->with('authStatus', 'success');

@@ -111,9 +111,9 @@ class User extends Authenticatable
      * @param  array  $credentials
      * @return boolean
      */
-    public function isUserActive($credentials)
+    public function isUserActive($name)
     {
-        $status = DB::select('select active from users where name = :name', ['name' => $credentials['name']]);
+        $status = DB::select('select active from users where name = :name', ['name' => $name]);
         return $status;
     }
 

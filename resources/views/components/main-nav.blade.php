@@ -18,14 +18,16 @@
           <a class="nav-link" data-toggle="tooltip" data-placement="top" title="Access Portfolio" href="{{ url('/portfolio') }}">Portfolio</a>
         </li>
 
-        @if(!Auth::check())
+        @if(!Auth::check() || !auth()->user()->isUserActive(Auth::user()->name)[0]->active)
           <li class="nav-item">
             <a class="nav-link" data-toggle="tooltip" data-placement="top" title="Login to Website" href="{{ url('/login') }}">Login</a>
           </li>
         @else
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="tooltip" data-placement="top" title="Login to Website" href="{{ url('/logout') }}">Logout</a>
-          </li>
+          @if (auth()->user()->isUserActive(Auth::user()->name)[0]->active)
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tooltip" data-placement="top" title="Login to Website" href="{{ url('/logout') }}">Logout</a>
+            </li>
+          @endif
         @endif
 
         <li class="nav-item">
@@ -41,7 +43,13 @@
         </li>
       </ul>
 
-      @if (Auth::check())
+      @if (Auth::check() && auth()->user()->isUserActive(Auth::user()->name)[0]->active)
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <span class="lead regular-text">Welcome, {{ Auth::user()->name }} </span>
+          </li>
+        </ul>
+
         @if (auth()->user()->isAdmin(Auth::user()->email))
           <ul class="navbar-nav">
             <li class="nav-item">
