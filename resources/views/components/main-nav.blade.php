@@ -52,8 +52,10 @@
 
         @if (auth()->user()->isAdmin(Auth::user()->email))
           <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" data-toggle="tooltip" data-placement="top" title="Control Panel" href="{{ url('/#') }}">Control Panel</a>
+            <li class="nav-item m-2 mt-3">
+              <form action="{{ url('/controlpanel') }}" method="GET">
+                <button type="submit" class="btn btn-success btn-sm">Control Panel</button>
+              </form>
             </li>
           </ul>
         @endif
