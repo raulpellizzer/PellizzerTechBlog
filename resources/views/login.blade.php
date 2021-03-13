@@ -5,6 +5,19 @@
 
 {{-- Login Form --}}
 <p class="main-header-text text-center mt-5"><strong>Sign In</strong></p>
+
+{{-- Check session 'authStatus' var --}}
+@if (session('authStatus') === "invalidCredentials")
+  <div class="container">
+    <div class="alert alert-danger text-center regular-text fade show alert-dismissible" role="alert">
+      Invalid credentials
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div>
+@endif
+
 <div class="container-fluid">
     <div class="row justify-content-center align-items-center">
         <div class="col col-sm-6 col-md-6 col-lg-4 col-xl-3">

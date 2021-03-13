@@ -8,24 +8,33 @@
 {{-- Check session 'registerStatus' var --}}
 @if (session('registerStatus') === "success")
   <div class="container">
-    <div class="alert alert-success text-center regular-text" role="alert">
+    <div class="alert alert-success text-center regular-text fade show alert-dismissible" role="alert">
       User successfully registered!
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
   </div>
 @endif
 
 @if (session('registerStatus') === "invalidCredentials")
   <div class="container">
-    <div class="alert alert-danger text-center regular-text" role="alert">
+    <div class="alert alert-danger text-center regular-text fade show alert-dismissible" role="alert">
       Invalid credentials
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
   </div>
 @endif
 
 @if (session('registerStatus') === "userExists")
   <div class="container">
-    <div class="alert alert-danger text-center regular-text" role="alert">
+    <div class="alert alert-danger text-center regular-text fade show alert-dismissible" role="alert">
       Pick a different username or email
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
   </div>
 @endif

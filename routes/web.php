@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 /*
     Render Home View
 */
-Route::view('/', 'home');
+Route::view('/', 'home')->name('home');
 
 
 /*
@@ -30,7 +30,7 @@ Route::view('/about', 'about');
 /*
     Render Login View
 */
-Route::view('/login', 'login');
+Route::view('/login', 'login')->name('login');
 
 
 /*

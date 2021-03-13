@@ -102,14 +102,6 @@ class User extends Authenticatable
      */
     public function authenticate($credentials)
     {
-
-        // TO DO: Addapt, return bool ...
-        if (Auth::attempt($credentials)) {
-            echo "User authenticated!";
-            die;
-        } else {
-            echo "User NOT authenticated!";
-            die;
-        }
+        return Auth::attempt($credentials) ? true : false;
     }
 }

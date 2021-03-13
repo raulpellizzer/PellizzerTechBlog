@@ -57,6 +57,13 @@ class UserController extends Controller
         }
     }
 
+    /**
+     * Authenticates user
+     * 
+     * @param request request data
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function authenticate(Request $request)
     {
         if ($request->method() === "POST") {
@@ -64,11 +71,22 @@ class UserController extends Controller
 
             $user         = new User;
             $credentials  = $request->only('name', 'password');
-            $user->authenticate($credentials);
+            $auth         = $user->authenticate($credentials);
 
-            // TO DO: Redirect or do something, login message ...
+            if ($auth)
+                return redirect()->route('home')->with('authStatus', 'success');
+            else
+                return redirect()->route('login')->with('authStatus', 'invalidCredentials');
         }
+    }
 
+    // To be implemented
+    public function logout(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/');
     }
 
     /**
