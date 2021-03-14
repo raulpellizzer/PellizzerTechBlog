@@ -47,11 +47,9 @@ Route::view('/contact', 'contact');
 
 /*
     Render Control Panel View
+    Available only for users with admin privileges
 */
-Route::view('/controlpanel', 'controlpanel')->middleware('auth');
-
-
-
+Route::view('/controlpanel', 'controlpanel')->middleware('admin');
 
 
 /*
