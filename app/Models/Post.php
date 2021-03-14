@@ -23,10 +23,22 @@ class Post extends Model
         'content',
     ];
 
+    /**
+     * Checks if a post already exists in the application
+     *
+     * @param  string  $title
+     * @return boolean
+     */
     public function checkPostInDB($title)
     {
         $posts = DB::select('select * from posts where title = :title', ['title' => $title]);
         return sizeof($posts) > 0 ? false : true;
+    }
+
+    public function getAll()
+    {
+        $posts = DB::select('select * from posts');
+        return $posts;
     }
 
 }

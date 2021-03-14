@@ -15,7 +15,15 @@ class PostController extends Controller
      */
     public function index()
     {
-        //
+        try {
+            $post  = new Post;
+            $data = $post->getAll();
+
+            return view('blogindex', ['data' => $data]);
+
+        } catch (Exception $e) {
+            // return redirect()->route('createPost')->with('createPostStatus', 'error'); // adapt
+        }
     }
 
     /**
@@ -28,7 +36,6 @@ class PostController extends Controller
     public function create(Request $request)
     {
         if ($request->method() === "POST") {
-
             try {
                 $post = new Post;
                 $postData   = $request->only('title', 'subtitle', 'bodycontent', 'author', 'category');

@@ -42,7 +42,7 @@
 
 {{-- New Post Form --}}
 <div class="container-fluid custom-margin-left">
-    <div class="row justify-content-left align-items-left">
+    <div class="row justify-content-center align-items-center">
         <div class="col col-md-9">
             <form action="{{ url('/posts/new/create') }}" method="POST">
               @csrf

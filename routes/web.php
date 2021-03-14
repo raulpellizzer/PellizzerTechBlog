@@ -89,14 +89,18 @@ Route::post(
 
 
 /*
+    /blog route: Show all posts
+*/
+Route::get(
+    '/blog',
+    [PostController::class,'index']
+    )->name('blogIndex');
+
+
+/*
     /logout route: Logs user out of the application
 */
 Route::get('/logout', [UserController::class,'logout']);
-
-
-Route::get('/blog', function() {
-    return 'Blog Route';
-});
 
 
 Route::get('/portfolio', function() {
