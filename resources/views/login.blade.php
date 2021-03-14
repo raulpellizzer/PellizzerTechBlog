@@ -29,6 +29,7 @@
   </div>
 @endif
 
+{{-- Login Form --}}
 <div class="container-fluid">
     <div class="row justify-content-center align-items-center">
         <div class="col col-sm-6 col-md-6 col-lg-4 col-xl-3">
@@ -37,12 +38,12 @@
 
                 <div class="form-group">
                   <label class="regular-text" for="name">Login</label>
-                  <input type="text" class="form-control" id="name" name="name" placeholder="Username">
+                  <input type="text" class="form-control" id="name" name="name" placeholder="Username" required>
                 </div>
         
                 <div class="form-group">
                   <label class="regular-text" for="password">Password</label>
-                  <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                  <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
                 </div>
 
                 <a href="#" class="float-right mb-3">Forgot your password?</a>

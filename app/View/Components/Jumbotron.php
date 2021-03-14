@@ -41,6 +41,10 @@ class Jumbotron extends Component
             $this->display      = "Pellizzer Tech Blog - Control Panel";
             $this->paragraphOne = "Manage your users, posts and all your application from here. ";
             $this->paragraphTwo = "Remember: With great powers comes great responsibility";
+        } else if ($this->type == "newpost") {
+            $this->display      = "Create a New Post";
+            $this->paragraphOne = "Use the fields below to create your new, awesome post! ";
+            $this->paragraphTwo = "The body supports up to 65.535 characters.";
         }
     }
 

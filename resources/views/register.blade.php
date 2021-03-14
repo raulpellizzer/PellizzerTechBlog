@@ -49,28 +49,28 @@
               <div class="form-group row">
                   <label for="userNameRegister" class="col-sm-2 col-form-label regular-text">Username</label>
                   <div class="col-sm-10">
-                    <input type="text" class="form-control" name="userNameRegister" id="userNameRegister">
+                    <input type="text" class="form-control" name="userNameRegister" id="userNameRegister" required>
                   </div>
               </div>
 
               <div class="form-group row">
                 <label for="email" class="col-sm-2 col-form-label regular-text">Email</label>
                 <div class="col-sm-10">
-                  <input type="email" class="form-control" name="email" id="email">
+                  <input type="email" class="form-control" name="email" id="email" required>
                 </div>
               </div>
 
               <div class="form-group row">
                 <label for="passwordRegister" class="col-sm-2 col-form-label regular-text">Password</label>
                 <div class="col-sm-10">
-                  <input type="password" class="form-control" name="passwordRegister" id="passwordRegister">
+                  <input type="password" class="form-control" name="passwordRegister" id="passwordRegister" required>
                 </div>
               </div>
 
               <div class="form-group row">
                   <label for="confPasswordRegister" class="col-sm-2 col-form-label regular-text">Confirm Password</label>
                   <div class="col-sm-10">
-                    <input type="password" class="form-control" name="confPasswordRegister" id="confPasswordRegister">
+                    <input type="password" class="form-control" name="confPasswordRegister" id="confPasswordRegister" required>
                   </div>
               </div>
 
@@ -82,7 +82,7 @@
     </div>
 
     <div class="padding-left">
-      <p class="main-header-text mt-5"><strong>Rules:</strong></p>
+      <p class="main-header-text mt-5"><strong>Instructions:</strong></p>
       <p class="regular-text">> All fields must not be empty</p>
       <p class="regular-text">> Your username must have at least 07 characters</p>
       <p class="regular-text">> Your password must have at least 08 characters</p>

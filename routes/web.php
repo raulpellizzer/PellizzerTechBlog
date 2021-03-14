@@ -53,6 +53,13 @@ Route::view('/controlpanel', 'controlpanel')->middleware('admin');
 
 
 /*
+    Render Create New Post View
+    Available only for users with admin privileges
+*/
+Route::view('/posts/new', 'newpost')->middleware('admin');
+
+
+/*
     /users route: Create new user
 */
 Route::post(
