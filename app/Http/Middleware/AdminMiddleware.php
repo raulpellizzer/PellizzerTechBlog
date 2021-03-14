@@ -4,9 +4,9 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Exception;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use PhpParser\Node\Stmt\Catch_;
 
 class AdminMiddleware
 {
@@ -22,10 +22,15 @@ class AdminMiddleware
         try {
             if (Auth::user()->isAdmin === 1)
                 return $next($request);
-            else
+            else {
+                $userController = new UserController;
+                $userController->logout($request);
                 return redirect(route('login'));
+            }
 
         } catch (Exception $e) {
+            $userController = new UserController;
+            $userController->logout($request);
             return redirect(route('login'));
         }
     }
