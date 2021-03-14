@@ -57,3 +57,11 @@ footer {
 .little-margin-left {
     margin-left: 2px;
 }
+
+.small-field {
+    max-width: 50%;
+}
+
+input, label, select {
+    display: block;
+}

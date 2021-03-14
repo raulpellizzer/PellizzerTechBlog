@@ -31,15 +31,19 @@ class PostController extends Controller
 
             try {
                 $post = new Post;
-                $postData = $request->only('title', 'subtitle', 'bodycontent', 'author', 'category');
+                $postData   = $request->only('title', 'subtitle', 'bodycontent', 'author', 'category');
+                $validation = $post->checkPostInDB($postData['title']);
 
-                $post->title    = $postData['title'];
-                $post->subtitle = $postData['subtitle'];
-                $post->content  = $postData['bodycontent'];
-                $post->author   = $postData['author'];
-                $post->category = $postData['category'];
-                $post->save();
-                return redirect()->route('createPost')->with('createPostStatus', 'success');
+                if ($validation) {
+                    $post->title    = $postData['title'];
+                    $post->subtitle = $postData['subtitle'];
+                    $post->content  = $postData['bodycontent'];
+                    $post->author   = $postData['author'];
+                    $post->category = $postData['category'];
+                    $post->save();
+                    return redirect()->route('createPost')->with('createPostStatus', 'success');
+                } else
+                    return redirect()->route('createPost')->with('createPostStatus', 'postAlreadyExists');
             } catch (Exception $e) {
                 return redirect()->route('createPost')->with('createPostStatus', 'error');
             }

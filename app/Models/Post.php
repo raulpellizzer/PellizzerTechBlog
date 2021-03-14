@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Post extends Model
 {
@@ -21,5 +22,11 @@ class Post extends Model
         'category',
         'content',
     ];
+
+    public function checkPostInDB($title)
+    {
+        $posts = DB::select('select * from posts where title = :title', ['title' => $title]);
+        return sizeof($posts) > 0 ? false : true;
+    }
 
 }
