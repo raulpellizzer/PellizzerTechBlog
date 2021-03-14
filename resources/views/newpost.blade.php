@@ -6,6 +6,29 @@
 {{-- Jumbotron --}}
 <x-jumbotron type="newpost"/>
 
+{{-- Check session 'createPostStatus' var --}}
+@if (session('createPostStatus') === "success")
+  <div class="container">
+    <div class="alert alert-success text-center regular-text fade show alert-dismissible" role="alert">
+      Your new post is up!
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div>
+@endif
+
+@if (session('createPostStatus') === "error")
+  <div class="container">
+    <div class="alert alert-danger text-center regular-text fade show alert-dismissible" role="alert">
+      Something went wrong!
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div>
+@endif
+
 {{-- New Post Form --}}
 <div class="container-fluid custom-margin-left">
     <div class="row justify-content-left align-items-left">

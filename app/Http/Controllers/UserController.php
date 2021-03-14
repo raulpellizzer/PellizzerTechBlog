@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -34,26 +35,32 @@ class UserController extends Controller
     public function create(Request $request)
     {
         if ($request->method() === "POST") {
-            $user         = new User;
-            $credentials  = $request->only('userNameRegister', 'passwordRegister', 'confPasswordRegister', 'email');
-            $validation   = $user->validateData($credentials);
 
-            if ($validation) {
-                $validation = $user->checkUserInDB($credentials['userNameRegister'], $credentials['email']);
+            try {
+                $user         = new User;
+                $credentials  = $request->only('userNameRegister', 'passwordRegister', 'confPasswordRegister', 'email');
+                $validation   = $user->validateData($credentials);
 
                 if ($validation) {
-                    $encryptedPassword = $user->encryptPassword($credentials['passwordRegister']);
+                    $validation = $user->checkUserInDB($credentials['userNameRegister'], $credentials['email']);
 
-                    $user->name        = $credentials['userNameRegister'];
-                    $user->password    = $encryptedPassword;
-                    $user->email       = $credentials['email'];
-                    $user->save();
-                    return redirect()->route('register')->with('registerStatus', 'success');
+                    if ($validation) {
+                        $encryptedPassword = $user->encryptPassword($credentials['passwordRegister']);
+
+                        $user->name        = $credentials['userNameRegister'];
+                        $user->password    = $encryptedPassword;
+                        $user->email       = $credentials['email'];
+                        $user->save();
+                        return redirect()->route('register')->with('registerStatus', 'success');
+                    } else
+                        return redirect()->route('register')->with('registerStatus', 'userExists');
+
                 } else
-                    return redirect()->route('register')->with('registerStatus', 'userExists');
+                    return redirect()->route('register')->with('registerStatus', 'invalidCredentials');
 
-            } else
-                return redirect()->route('register')->with('registerStatus', 'invalidCredentials');
+            } catch (Exception $e) {
+                return redirect()->route('register')->with('registerStatus', 'error');
+            }
         }
     }
 

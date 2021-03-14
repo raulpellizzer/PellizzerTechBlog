@@ -1,11 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Post;
+use Exception;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -17,13 +19,31 @@ class PostController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Create a new post
+     * 
+     * @param request request data
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        if ($request->method() === "POST") {
+
+            try {
+                $post = new Post;
+                $postData = $request->only('title', 'subtitle', 'bodycontent', 'author', 'category');
+
+                $post->title    = $postData['title'];
+                $post->subtitle = $postData['subtitle'];
+                $post->content  = $postData['bodycontent'];
+                $post->author   = $postData['author'];
+                $post->category = $postData['category'];
+                $post->save();
+                return redirect()->route('createPost')->with('createPostStatus', 'success');
+            } catch (Exception $e) {
+                return redirect()->route('createPost')->with('createPostStatus', 'error');
+            }
+        }
     }
 
     /**

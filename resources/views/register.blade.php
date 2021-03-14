@@ -39,6 +39,17 @@
   </div>
 @endif
 
+@if (session('registerStatus') === "error")
+  <div class="container">
+    <div class="alert alert-danger text-center regular-text fade show alert-dismissible" role="alert">
+      Something went wrong!
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div>
+@endif
+
 {{-- Register Form --}}
 <div class="container-fluid">
     <div class="row justify-content-center align-items-center">

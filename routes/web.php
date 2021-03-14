@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -56,7 +57,17 @@ Route::view('/controlpanel', 'controlpanel')->middleware('admin');
     Render Create New Post View
     Available only for users with admin privileges
 */
-Route::view('/posts/new', 'newpost')->middleware('admin');
+Route::view('/posts/new', 'newpost')->name('createPost')->middleware('admin');
+
+
+/*
+    /posts/new/create route: Create new post
+    Available only for users with admin privileges
+*/
+Route::post(
+    '/posts/new/create',
+    [PostController::class,'create']
+    )->name('createUser')->middleware('admin');
 
 
 /*
