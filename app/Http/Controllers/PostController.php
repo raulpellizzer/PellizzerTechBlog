@@ -17,12 +17,12 @@ class PostController extends Controller
     {
         try {
             $post  = new Post;
-            $data = $post->getAll();
-
+            $data = $post->getPublishedPosts();
             return view('blogindex', ['data' => $data]);
 
         } catch (Exception $e) {
-            // return redirect()->route('createPost')->with('createPostStatus', 'error'); // adapt
+            session(['errorMessage' => $e->getMessage()]);
+            return redirect()->route('home')->with('viewPosts', 'error');
         }
     }
 

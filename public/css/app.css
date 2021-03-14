@@ -62,6 +62,14 @@ footer {
     max-width: 50%;
 }
 
+.medium-field {
+    max-width: 70%;
+}
+
 input, label, select {
     display: block;
+}
+
+.card-body {
+    background-color: rgba(187, 133, 133, 0.040);
 }

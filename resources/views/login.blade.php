@@ -49,7 +49,7 @@
                 <a href="#" class="float-right mb-3">Forgot your password?</a>
         
                 <div class="col-sm d-flex justify-content-center">
-                    <button type="submit" class="btn btn-primary">Sign in</button>
+                    <button type="submit" class="btn btn-primary regular-text">Sign in</button>
                 </div>
             </form>
 

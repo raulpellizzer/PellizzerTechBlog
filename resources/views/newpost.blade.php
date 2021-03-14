@@ -88,10 +88,8 @@
               </div>
 
               <div class="col-sm-12 d-flex justify-content-center">
-                  <button type="submit" class="btn btn-primary">Post</button>
+                  <button type="submit" class="btn btn-primary regular-text">Post</button>
               </div>
-
-              <br><br><br>
             </form>
         </div>
     </div>

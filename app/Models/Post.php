@@ -35,9 +35,9 @@ class Post extends Model
         return sizeof($posts) > 0 ? false : true;
     }
 
-    public function getAll()
+    public function getPublishedPosts()
     {
-        $posts = DB::select('select * from posts');
+        $posts = DB::select('select * from posts where published = 1');
         return $posts;
     }
 
