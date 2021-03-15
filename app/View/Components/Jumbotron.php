@@ -30,25 +30,29 @@ class Jumbotron extends Component
     {
         if ($this->type == "home") {
             $this->display      = "Web Security in " . date('Y') . " and Web Development";
-            $this->paragraphOne = "Tips and drills on how be to more secure in the digital era when working on the internet and on devices in general.";
-            $this->paragraphTwo = "Are you a web developer? This is also for you! Check our 'Development' section in our blog."; 
+            $this->paragraphOne = "Tips and drills on how be to more secure in the digital era when working on the internet and on devices in general";
+            $this->paragraphTwo = "Are you a web developer? This is also for you! Check our 'Development' section in our blog"; 
 
         } else if ($this->type === "contact") {
             $this->display      = "Contact Us";
-            $this->paragraphOne = "Got any questions, suggestions or comments? Please, feel free to contact us! We will be happy to hear from you.";
-            $this->paragraphTwo = "We will reply as soon as possible.";
+            $this->paragraphOne = "Got any questions, suggestions or comments? Please, feel free to contact us! We will be happy to hear from you";
+            $this->paragraphTwo = "We will reply as soon as possible";
         } else if ($this->type === "controlpanel") {
             $this->display      = "Pellizzer Tech Blog - Control Panel";
-            $this->paragraphOne = "Manage your users, posts and all your application from here. ";
-            $this->paragraphTwo = "Remember: With great powers comes great responsibility.";
+            $this->paragraphOne = "Manage your users, posts and all your application from here";
+            $this->paragraphTwo = "Remember: With great powers comes great responsibility";
         } else if ($this->type === "newpost") {
             $this->display      = "Create a New Post";
-            $this->paragraphOne = "Use the fields below to create your new, awesome post! ";
-            $this->paragraphTwo = "The body supports up to 65.535 characters.";
+            $this->paragraphOne = "Use the fields below to create your new, awesome post!";
+            $this->paragraphTwo = "The body supports up to 65.535 characters";
         } else if ($this->type === "blogindex") {
             $this->display      = "Blogs";
             $this->paragraphOne = "Read about technology, security, development and much more!";
             $this->paragraphTwo = "Hope you enjoy!";
+        } else if ($this->type === "usermanagement") {
+            $this->display      = "User Management - Control Panel";
+            $this->paragraphOne = "Manage your users with ease";
+            $this->paragraphTwo = "Grant access, check their data, activate or deactivate";
         }
     }
 

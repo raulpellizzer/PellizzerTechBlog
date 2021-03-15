@@ -127,4 +127,10 @@ class User extends Authenticatable
         $privilege = DB::select('select isAdmin from users where email = :email', ['email' => $email]);
         return $privilege[0]->isAdmin;
     }
+
+    public function getCPUserData()
+    {
+        $data = DB::select('select id, name, email, created_at, active from users');
+        return $data;
+    }
 }

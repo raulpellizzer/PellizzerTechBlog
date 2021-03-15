@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ControlPanelController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -50,7 +51,7 @@ Route::view('/contact', 'contact');
     Render Control Panel View
     Available only for users with admin privileges
 */
-Route::view('/controlpanel', 'controlpanel')->middleware('admin');
+Route::view('/controlpanel', 'controlpanel')->name('controlpanel')->middleware('admin');
 
 
 /*
@@ -104,6 +105,16 @@ Route::get(
     '/blog/post/{postId}',
     [PostController::class,'show']
     );
+
+
+/*
+    /controlpanel/manageusers: Control Panel for user management
+    Available only for users with admin privileges
+*/
+Route::get(
+    '/controlpanel/manageusers',
+    [ControlPanelController::class,'index']
+    )->name('manageUsers')->middleware('admin');
 
 
 /*
