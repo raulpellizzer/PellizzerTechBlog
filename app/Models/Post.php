@@ -35,10 +35,26 @@ class Post extends Model
         return sizeof($posts) > 0 ? false : true;
     }
 
+    /**
+     * Get published posts
+     *
+     * @return array
+     */
     public function getPublishedPosts()
     {
         $posts = DB::select('select * from posts where published = 1');
         return $posts;
     }
 
+    /**
+     * Retrieve data about a given post
+     *
+     * @param  integer  $id
+     * @return array
+     */
+    public function getPostData($id)
+    {
+        $post = DB::select('select * from posts where id = :id', ['id' => $id]);
+        return $post;
+    }
 }

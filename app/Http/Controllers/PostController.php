@@ -76,7 +76,15 @@ class PostController extends Controller
      */
     public function show($id)
     {
-        //
+        try {
+            $post     = new Post;
+            $data = $post->getPostData($id);
+            return view('post', ['data' => $data]);
+
+        } catch (Exception $e) {
+            session(['errorMessage' => $e->getMessage()]);
+            return redirect()->route('blogIndex')->with('viewPosts', 'error');
+        }
     }
 
     /**

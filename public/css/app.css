@@ -73,3 +73,8 @@ input, label, select {
 .card-body {
     background-color: rgba(187, 133, 133, 0.040);
 }
+
+textarea {
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+}

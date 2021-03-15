@@ -98,6 +98,15 @@ Route::get(
 
 
 /*
+    /blog route: Show specific post
+*/
+Route::get(
+    '/blog/post/{postId}',
+    [PostController::class,'show']
+    );
+
+
+/*
     /logout route: Logs user out of the application
 */
 Route::get('/logout', [UserController::class,'logout']);
