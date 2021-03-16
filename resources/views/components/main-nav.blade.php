@@ -4,7 +4,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
   
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse regular-text" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
           <a class="nav-link" data-toggle="tooltip" data-placement="top" title="Home Page" href="{{ url('/') }}">Home <span class="sr-only">(current)</span></a>

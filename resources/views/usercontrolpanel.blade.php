@@ -42,8 +42,8 @@
 
 <div class="container">
     <form class="form-inline ">
-        <label for="namesearch">Search for a username:</label>
-        <input class="form-control mr-sm-2 ml-4" type="search" id="namesearch" name="namesearch" placeholder="Username" onkeyup="searchUser()" aria-label="Search">
+        <label class="regular-text" for="namesearch">Search for a username:</label>
+        <input class="form-control mr-sm-2 ml-4 regular-text" type="search" id="namesearch" name="namesearch" placeholder="Username" onkeyup="searchUser()" aria-label="Search">
     </form>
 </div>
 
