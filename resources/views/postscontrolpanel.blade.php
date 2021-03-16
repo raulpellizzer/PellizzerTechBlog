@@ -44,6 +44,7 @@
     <form class="form-inline ">
         <label class="regular-text" for="postsearch">Search for a post:</label>
         <input class="form-control mr-sm-2 ml-4 regular-text" type="search" id="postsearch" name="postsearch" placeholder="Title" onkeyup="searchUser()" aria-label="Search">
+        <a href="{{ url('/posts/new') }}" class="btn btn-secondary regular-text float-right">Create New Post</a>
     </form>
 </div>
 
