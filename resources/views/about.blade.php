@@ -2,7 +2,6 @@
 
 {{-- Main navbar --}}
 <x-main-nav/>
-
 <br><br>
 
 {{-- Top Portion --}}

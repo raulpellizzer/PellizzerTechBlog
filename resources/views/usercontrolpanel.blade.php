@@ -6,6 +6,40 @@
 {{-- Jumbotron --}}
 <x-jumbotron type="usermanagement"/>
 
+{{-- Check session 'updateUsers' var --}}
+@if (session('updateUsers') === "error")
+  <div class="container">
+    <div class="alert alert-danger text-center regular-text fade show alert-dismissible" role="alert">
+        {{ Session::get('errorMessage')}}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div>
+@endif
+
+@if (session('updateUsers') === "errorInUpudate")
+  <div class="container">
+    <div class="alert alert-danger text-center regular-text fade show alert-dismissible" role="alert">
+        There was an error when attempting to update user status
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div>
+@endif
+
+@if (session('updateUsers') === "success")
+  <div class="container">
+    <div class="alert alert-success text-center regular-text fade show alert-dismissible" role="alert">
+      User data updated successfully
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div>
+@endif
+
 {{-- Grid --}}
 <form action="{{ url('/controlpanel/manageusers/save') }}" method="POST">
     @csrf

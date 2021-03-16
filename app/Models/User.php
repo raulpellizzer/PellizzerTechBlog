@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Exception;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -128,9 +129,57 @@ class User extends Authenticatable
         return $privilege[0]->isAdmin;
     }
 
+    /**
+     * Retrieve data for user control panel
+     *
+     * @return array
+     */
     public function getCPUserData()
     {
-        $data = DB::select('select id, name, email, created_at, active from users');
+        $data = DB::table('users')->select('id', 'name', 'email', 'created_at', 'active')->get();
         return $data;
+    }
+
+    /**
+     * Update user status
+     *
+     * @param  array  $input
+     * @return boolean
+     */
+    public function updateUserStatus($input)
+    {
+        try {
+            $checkBoxMarkedIds = $this->getMarkedCheckBoxIds($input);
+            $numberOfUsers     = DB::table('users')->select()->get();
+            
+            for ($i = 1; $i <= sizeof($numberOfUsers); $i++) { 
+                if (in_array($i, $checkBoxMarkedIds))
+                    DB::table('users')->where('id', $i)->update(['active' => 1]);
+                else
+                    DB::table('users')->where('id', $i)->update(['active' => 0]);
+            }
+
+            return true;
+        } catch (Exception $e) {
+            return false;
+        }
+    }
+
+    /**
+     * Strips the marked checkbox input names and retrieves the marked id
+     *
+     * @param  array  $input
+     * @return array
+     */
+    public function getMarkedCheckBoxIds($input)
+    {
+        $markedIds = array();
+
+        for ($i = 1; $i < sizeof($input); $i++) {
+            $id = str_split($input[$i], 5);
+            array_push($markedIds, $id[1]);
+        }
+
+        return $markedIds;
     }
 }

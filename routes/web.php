@@ -117,6 +117,10 @@ Route::get(
     )->name('manageUsers')->middleware('admin');
 
 
+/*
+    /controlpanel/manageusers/save: Updates data about users
+    Available only for users with admin privileges
+*/
 Route::post(
     '/controlpanel/manageusers/save',
     [ControlPanelController::class,'update']

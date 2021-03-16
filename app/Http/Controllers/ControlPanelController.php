@@ -38,17 +38,17 @@ class ControlPanelController extends Controller
     public function update(Request $request)
     {
         try {
-            // echo "aqui";
-            // var_dump($request);
-            // echo $request->input('ckbox');
-            // var_dump($request->input('ckbox'));
-            // die;
-            // $checkBox = $request->input('ckbox');
-            // var_dump($checkBox);
-            // echo $request;
+            $user   = new User;
+            $input  = array_keys($request->all());
+            $result = $user->updateUserStatus($input);
+
+            if (!$result)
+                return redirect()->route('manageUsers')->with('updateUsers', 'errorInUpudate');
+            return redirect()->route('manageUsers')->with('updateUsers', 'success');
 
         } catch (Exception $e) {
-            
+            session(['errorMessage' => $e->getMessage()]);
+            return redirect()->route('manageUsers')->with('updateUsers', 'error');
         }
     }
 

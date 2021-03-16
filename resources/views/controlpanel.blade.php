@@ -6,7 +6,7 @@
 {{-- Jumbotron --}}
 <x-jumbotron type="controlpanel"/>
 
-{{-- Check session 'viewPosts' var --}}
+{{-- Check session 'usercontrolpanel' var --}}
 @if (session('usercontrolpanel') === "error")
   <div class="container">
     <div class="alert alert-danger text-center regular-text fade show alert-dismissible" role="alert">
