@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Exception;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
@@ -56,5 +57,59 @@ class Post extends Model
     {
         $post = DB::select('select * from posts where id = :id', ['id' => $id]);
         return $post;
+    }
+
+    /**
+     * Retrieve data about all posts
+     *
+     * @return array
+     */
+    public function getCPPostData()
+    {
+        $data = DB::table('posts')->select('id', 'title', 'subtitle', 'category', 'published')->get();
+        return $data;
+    }
+
+    /**
+     * Update post status
+     *
+     * @param  array  $input
+     * @return boolean
+     */
+    public function updatePostStatus($input)
+    {
+        try {
+            $checkBoxMarkedIds = $this->getMarkedCheckBoxIds($input);
+            $numberOfPosts     = DB::table('posts')->select()->get();
+            
+            for ($i = 1; $i <= sizeof($numberOfPosts); $i++) { 
+                if (in_array($i, $checkBoxMarkedIds))
+                    DB::table('posts')->where('id', $i)->update(['published' => 1]);
+                else
+                    DB::table('posts')->where('id', $i)->update(['published' => 0]);
+            }
+
+            return true;
+        } catch (Exception $e) {
+            return false;
+        }
+    }
+
+    /**
+     * Strips the marked checkbox input names and retrieves the marked id
+     *
+     * @param  array  $input
+     * @return array
+     */
+    public function getMarkedCheckBoxIds($input)
+    {
+        $markedIds = array();
+
+        for ($i = 1; $i < sizeof($input); $i++) {
+            $id = str_split($input[$i], 5);
+            array_push($markedIds, $id[1]);
+        }
+
+        return $markedIds;
     }
 }

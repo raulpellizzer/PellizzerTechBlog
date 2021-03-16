@@ -14,7 +14,7 @@ class ControlPanelController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function cpUserIndex()
     {
 
         try {
@@ -24,9 +24,27 @@ class ControlPanelController extends Controller
 
         } catch (Exception $e) {
             session(['errorMessage' => $e->getMessage()]);
-            return redirect()->route('controlpanel')->with('usercontrolpanel', 'error');
+            return redirect()->route('controlpanel')->with('controlpanel', 'error');
         }
 
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function cpPostsIndex()
+    {
+        try {
+            $post = new Post;
+            $data  = $post->getCPPostData();
+            return view('postscontrolpanel', ['data' => $data]);
+
+        } catch (Exception $e) {
+            session(['errorMessage' => $e->getMessage()]);
+            return redirect()->route('controlpanel')->with('controlpanel', 'error');
+        }
     }
 
     /**
@@ -35,7 +53,7 @@ class ControlPanelController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function updateUserStatus(Request $request)
     {
         try {
             $user   = new User;
@@ -51,6 +69,31 @@ class ControlPanelController extends Controller
             return redirect()->route('manageUsers')->with('updateUsers', 'error');
         }
     }
+
+    /**
+     * Update data about posts
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function updatePostStatus(Request $request)
+    {
+        try {
+            $post   = new Post;
+            $input  = array_keys($request->all());
+            $result = $post->updatePostStatus($input);
+
+            if (!$result)
+                return redirect()->route('managePosts')->with('updatePost', 'errorInUpudate');
+            return redirect()->route('managePosts')->with('updatePost', 'success');
+
+        } catch (Exception $e) {
+            session(['errorMessage' => $e->getMessage()]);
+            return redirect()->route('managePosts')->with('updatePost', 'error');
+        }
+    }
+
+
 
     /**
      * Show the form for creating a new resource.

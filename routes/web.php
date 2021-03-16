@@ -113,8 +113,18 @@ Route::get(
 */
 Route::get(
     '/controlpanel/manageusers',
-    [ControlPanelController::class,'index']
+    [ControlPanelController::class,'cpUserIndex']
     )->name('manageUsers')->middleware('admin');
+
+
+/*
+    /controlpanel/manageposts: Control Panel for posts management
+    Available only for users with admin privileges
+*/
+Route::get(
+    '/controlpanel/manageposts',
+    [ControlPanelController::class,'cpPostsIndex']
+    )->name('managePosts')->middleware('admin');
 
 
 /*
@@ -123,7 +133,17 @@ Route::get(
 */
 Route::post(
     '/controlpanel/manageusers/save',
-    [ControlPanelController::class,'update']
+    [ControlPanelController::class,'updateUserStatus']
+    )->middleware('admin');
+
+
+/*
+    /controlpanel/manageposts/save: Updates data about posts
+    Available only for users with admin privileges
+*/
+Route::post(
+    '/controlpanel/manageposts/save',
+    [ControlPanelController::class,'updatePostStatus']
     )->middleware('admin');
 
 
@@ -136,3 +156,12 @@ Route::get('/logout', [UserController::class,'logout']);
 Route::get('/portfolio', function() {
     return 'Portfolio Route';
 });
+
+
+
+
+
+
+
+// REMOVE LATER
+// throw new Exception("Value must be 1 or below");

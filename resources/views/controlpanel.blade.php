@@ -6,8 +6,8 @@
 {{-- Jumbotron --}}
 <x-jumbotron type="controlpanel"/>
 
-{{-- Check session 'usercontrolpanel' var --}}
-@if (session('usercontrolpanel') === "error")
+{{-- Check session 'controlpanel' var --}}
+@if (session('controlpanel') === "error")
   <div class="container">
     <div class="alert alert-danger text-center regular-text fade show alert-dismissible" role="alert">
       {{ Session::get('errorMessage')}}

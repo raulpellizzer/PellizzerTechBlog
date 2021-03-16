@@ -53,6 +53,10 @@ class Jumbotron extends Component
             $this->display      = "User Management - Control Panel";
             $this->paragraphOne = "Manage your users with ease";
             $this->paragraphTwo = "Grant access, check their data, activate or deactivate";
+        } else if ($this->type === "postmanagement") {
+            $this->display      = "Post Management - Control Panel";
+            $this->paragraphOne = "Manage your posts with ease";
+            $this->paragraphTwo = "Create, edit, delete or simply deactivate";
         }
     }
 
