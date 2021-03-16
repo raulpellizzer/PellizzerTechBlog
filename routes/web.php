@@ -117,6 +117,12 @@ Route::get(
     )->name('manageUsers')->middleware('admin');
 
 
+Route::post(
+    '/controlpanel/manageusers/save',
+    [ControlPanelController::class,'update']
+    )->middleware('admin');
+
+
 /*
     /logout route: Logs user out of the application
 */
