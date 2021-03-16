@@ -40,10 +40,17 @@
   </div>
 @endif
 
+<div class="container">
+    <form class="form-inline ">
+        <label for="namesearch">Search for a username:</label>
+        <input class="form-control mr-sm-2 ml-4" type="search" id="namesearch" name="namesearch" placeholder="Username" onkeyup="searchUser()" aria-label="Search">
+    </form>
+</div>
+
 {{-- Grid --}}
 <form action="{{ url('/controlpanel/manageusers/save') }}" method="POST">
     @csrf
-    <table class="table table-striped table-bordered container">
+    <table class="table table-striped table-bordered container" id="usergrid" >
         <thead>
         <tr>
             <th class="main-header-text" scope="col">ID</th>
