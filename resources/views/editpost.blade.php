@@ -44,11 +44,11 @@
                 <div>
                     <label class="col-form-label regular-text" for="category">Choose a category for this post</label>
                     <select class="form-control" name="category" id="category">
-                    <option>Web Security</option>
-                    <option>Development</option>
-                    <option>IT Essentials</option>
-                    <option>Best Practices</option>
-                    <option>Other</option>
+
+                      @foreach ($data[sizeof($data) - 1] as $category)
+                        <option> <?php echo $category->category ?> </option>
+                      @endforeach
+
                     </select>
                 </div>
               </div>

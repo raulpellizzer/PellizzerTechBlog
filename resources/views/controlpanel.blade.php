@@ -23,10 +23,21 @@
         <div class="col cpgrid">
             <a href="{{ url('/controlpanel/manageusers') }}" class="btn btn-secondary stretched-link regular-text"><h2>Manage Users</h2></a>
         </div>
+
         <div class="col cpgrid">
             <a href="{{ url('/controlpanel/manageposts') }}" class="btn btn-secondary stretched-link regular-text"><h2>Manage Posts</h2></a>
         </div>
     </div>
+</div><br>
+
+<div class="container">
+  <div class="row text-center">
+    <div class="col cpgrid"> {{-- TO BE IMPLEMENTED  --}}
+      <a href="{{ url('/controlpanel/managecategories') }}" class="btn btn-secondary stretched-link regular-text"><h2>Manage Categories</h2></a>
+    </div>
+
+    <div class="col cpgrid"></div>
+  </div>
 </div>
 
 {{-- Footer --}}

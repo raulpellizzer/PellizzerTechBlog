@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\Post;
+use App\Models\Categorie;
 use Exception;
 use Illuminate\Http\Request;
 
@@ -84,8 +85,12 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        $post     = new Post;
-        $data = $post->getPostData($id);
+        $post       = new Post;
+        $categorie = new Categorie;
+
+        $categories = $categorie->getCategories();
+        $data       = $post->getPostData($id);
+        array_push($data, $categories);
         return view('editpost', ['data' => $data]);
     }
 
@@ -116,6 +121,21 @@ class PostController extends Controller
                 return redirect()->route('managePosts')->with('updatePost', 'error');
             }
         }
+    }
+
+    /**
+     * Show the form to create new post
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function showCreateForm()
+    {
+        $post       = new Post;
+        $categorie = new Categorie;
+
+        $data = $categorie->getCategories();
+        return view('newpost', ['data' => $data]);
     }
 
     /**

@@ -3,6 +3,7 @@
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ControlPanelController;
+use App\Http\Controllers\CategorieController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -58,7 +59,10 @@ Route::view('/controlpanel', 'controlpanel')->name('controlpanel')->middleware('
     Render Create New Post View
     Available only for users with admin privileges
 */
-Route::view('/posts/new', 'newpost')->name('createPost')->middleware('admin');
+Route::get(
+    '/posts/new',
+    [PostController::class, 'showCreateForm']
+)->name('createPost')->middleware('admin');
 
 
 /*
@@ -180,3 +184,7 @@ Route::get('/portfolio', function() {
 
 // REMOVE LATER
 // throw new Exception("Value must be 1 or below");
+
+
+// Tests
+// Route::get('/teste', [CategorieController::class, 'index']);
