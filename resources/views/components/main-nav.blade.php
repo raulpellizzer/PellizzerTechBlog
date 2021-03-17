@@ -14,10 +14,6 @@
           <a class="nav-link" data-toggle="tooltip" data-placement="top" title="Access Blog" href="{{ url('/blog') }}">Blog</a>
         </li>
 
-        <li class="nav-item">
-          <a class="nav-link" data-toggle="tooltip" data-placement="top" title="Access Portfolio" href="{{ url('/portfolio') }}">Portfolio</a>
-        </li>
-
         @if(!Auth::check() || !auth()->user()->isUserActive(Auth::user()->name)[0]->active)
           <li class="nav-item">
             <a class="nav-link" data-toggle="tooltip" data-placement="top" title="Login to Website" href="{{ url('/login') }}">Login</a>

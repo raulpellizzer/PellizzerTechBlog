@@ -171,20 +171,31 @@ Route::post(
 
 
 /*
+    /pcontrolpanel/createcategorie: Shows the form for creating a new categorie
+    Available only for users with admin privileges
+*/
+Route::get(
+    '/controlpanel/createcategorie',
+    [CategorieController::class, 'create']
+    )->name('createCategorie')->middleware('admin');
+
+
+/*
+    /pcontrolpanel/createcategorie/save: Create a new categorie
+    Available only for users with admin privileges
+*/
+Route::post(
+    '/controlpanel/createcategorie/save',
+    [CategorieController::class, 'store']
+    )->middleware('admin');
+
+
+/*
     /logout route: Logs user out of the application
 */
 Route::get('/logout', [UserController::class, 'logout']);
 
 
-Route::get('/portfolio', function() {
-    return 'Portfolio Route';
-});
-
-
 
 // REMOVE LATER
 // throw new Exception("Value must be 1 or below");
-
-
-// Tests
-// Route::get('/teste', [CategorieController::class, 'index']);

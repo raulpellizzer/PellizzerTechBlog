@@ -45,11 +45,11 @@
                     <label class="col-form-label regular-text" for="category">Choose a category for this post</label>
                     <select class="form-control" name="category" id="category">
 
-                      <option> <?php echo $data[0]->category ?> </option>
+                      <option class="regular-text"> <?php echo $data[0]->category ?> </option>
                       
                       @foreach ($data[sizeof($data) - 1] as $category)
                         @if ($data[0]->category != $category->category)
-                          <option> <?php echo $category->category ?> </option>
+                          <option class="regular-text"> <?php echo $category->category ?> </option>
                         @endif
                       @endforeach
 

@@ -32,8 +32,8 @@
 
 <div class="container">
   <div class="row text-center">
-    <div class="col cpgrid"> {{-- TO BE IMPLEMENTED  --}}
-      <a href="{{ url('/controlpanel/managecategories') }}" class="btn btn-secondary stretched-link regular-text"><h2>Manage Categories</h2></a>
+    <div class="col cpgrid">
+      <a href="{{ url('/controlpanel/createcategorie') }}" class="btn btn-secondary stretched-link regular-text"><h2>Create New Categorie</h2></a>
     </div>
 
     <div class="col cpgrid"></div>

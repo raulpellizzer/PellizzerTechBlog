@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Categorie;
+use Exception;
 
 class CategorieController extends Controller
 {
@@ -14,11 +15,7 @@ class CategorieController extends Controller
      */
     public function index()
     {
-        // $cat = new Categorie;
-        // $cat->getCategories();
-        // To be continued
-
-
+        //
     }
 
     /**
@@ -28,7 +25,15 @@ class CategorieController extends Controller
      */
     public function create()
     {
-        //
+        try {
+            $categorie = new Categorie;
+            $data = $categorie->getCategories();
+            return view('createcategorie', ['data' => $data]);
+
+        } catch (Exception $e) {
+            session(['errorMessage' => $e->getMessage()]);
+            return redirect()->route('controlpanel')->with('controlpanel', 'error');
+        }
     }
 
     /**
@@ -39,7 +44,17 @@ class CategorieController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        try {
+            $categorie = new Categorie;
+            $input     = $request->all();
+            $categorie->category = $input['newcategorie'];
+            $categorie->save();
+            return redirect()->route('createCategorie')->with('createstatus', 'success');
+
+        } catch (Exception $e) {
+            session(['errorMessage' => $e->getMessage()]);
+            return redirect()->route('createCategorie')->with('createstatus', 'error');
+        }
     }
 
     /**

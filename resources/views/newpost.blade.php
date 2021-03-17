@@ -80,7 +80,7 @@
                     <select class="form-control" name="category" id="category">
 
                       @foreach ($data as $category)
-                        <option> <?php echo $category->category ?> </option>
+                        <option class="regular-text"> <?php echo $category->category ?> </option>
                       @endforeach
 
                     </select>

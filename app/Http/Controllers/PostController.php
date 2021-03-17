@@ -52,6 +52,7 @@ class PostController extends Controller
                     return redirect()->route('createPost')->with('createPostStatus', 'success');
                 } else
                     return redirect()->route('createPost')->with('createPostStatus', 'postAlreadyExists');
+
             } catch (Exception $e) {
                 return redirect()->route('createPost')->with('createPostStatus', 'error');
             }
@@ -114,8 +115,8 @@ class PostController extends Controller
                 $post->author   = $postData['author'];
                 $post->category = $postData['category'];
                 $post->save();
-
                 return redirect()->route('managePosts')->with('updatePost', 'success');
+
             } catch (Exception $e) {
                 session(['errorMessage' => $e->getMessage()]);
                 return redirect()->route('managePosts')->with('updatePost', 'error');

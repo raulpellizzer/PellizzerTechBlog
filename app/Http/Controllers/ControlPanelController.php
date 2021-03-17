@@ -16,7 +16,6 @@ class ControlPanelController extends Controller
      */
     public function cpUserIndex()
     {
-
         try {
             $user  = new User;
             $data  = $user->getCPUserData();
@@ -26,7 +25,6 @@ class ControlPanelController extends Controller
             session(['errorMessage' => $e->getMessage()]);
             return redirect()->route('controlpanel')->with('controlpanel', 'error');
         }
-
     }
 
     /**
