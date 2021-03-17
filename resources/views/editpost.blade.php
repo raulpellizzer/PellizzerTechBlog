@@ -6,13 +6,6 @@
 {{-- Jumbotron --}}
 <x-jumbotron type="editpost"/>
 
-
-
-
-
-
-
-
 {{-- Edit Post Form --}}
 <div class="container-fluid custom-margin-left">
     <div class="row justify-content-center align-items-center">
@@ -67,11 +60,6 @@
         </div>
     </div>
 </div>
-
-
-
-
-
 
 {{-- Footer --}}
 <x-footer/>

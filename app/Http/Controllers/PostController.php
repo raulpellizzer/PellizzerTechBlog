@@ -98,7 +98,24 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        echo "Updating here" . $id;
+        if ($request->method() === "POST") {
+            try {
+                $post           = Post::find($id);
+                $postData       = $request->only('title', 'subtitle', 'bodycontent', 'author', 'category');
+
+                $post->title    = $postData['title'];
+                $post->subtitle = $postData['subtitle'];
+                $post->content  = $postData['bodycontent'];
+                $post->author   = $postData['author'];
+                $post->category = $postData['category'];
+                $post->save();
+
+                return redirect()->route('managePosts')->with('updatePost', 'success');
+            } catch (Exception $e) {
+                session(['errorMessage' => $e->getMessage()]);
+                return redirect()->route('managePosts')->with('updatePost', 'error');
+            }
+        }
     }
 
     /**
