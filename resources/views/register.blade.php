@@ -91,15 +91,28 @@
             </form>
         </div>
     </div>
+</div>
 
-    <div class="padding-left">
-      <p class="main-header-text mt-5"><strong>Instructions:</strong></p>
-      <p class="regular-text">> All fields must not be empty</p>
-      <p class="regular-text">> Your username must have at least 07 characters</p>
-      <p class="regular-text">> Your password must have at least 08 characters</p>
-      <p class="regular-text">> Your password must contain at least one upper case letter ('A', 'B', ...)</p>
-      <p class="regular-text">> Your password must contain at least one special character among these ( []!@#$%&*-()<>{} )</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md">
+      <div class="padding-left">
+        <p class="main-header-text mt-5"><strong>Instructions:</strong></p>
+        <p class="regular-text">> Your username must have at least 07 characters</p>
+        <p class="regular-text">> Your password must have at least 08 characters</p>
+        <p class="regular-text">> Your password must contain at least one upper case letter ('A', 'B', ...)</p>
+        <p class="regular-text">> Your password must contain at least one special character among these ( []!@#$%&*-()<>{} )</p>
+      </div>
     </div>
+    <div class="col-md"></div>
+    <div class="col-md">
+      <div class="padding-left">
+        <p class="main-header-text mt-5"><strong>What am i registering for?</strong></p>
+        <p class="regular-text">> Receive notifications by email whenever a new post is made</p>
+        <p class="regular-text">> Gain access and interact with others in the comment section of each post</p>
+      </div>
+    </div>
+  </div>
 </div>
 
 {{-- Footer --}}
