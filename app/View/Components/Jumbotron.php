@@ -57,6 +57,10 @@ class Jumbotron extends Component
             $this->display      = "Post Management - Control Panel";
             $this->paragraphOne = "Manage your posts with ease";
             $this->paragraphTwo = "Create, edit, delete or simply deactivate";
+        } else if ($this->type === "editpost") {
+            $this->display      = "Editing your post";
+            $this->paragraphOne = "Edit your content here";
+            $this->paragraphTwo = "";
         }
     }
 

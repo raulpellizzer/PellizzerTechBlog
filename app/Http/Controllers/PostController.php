@@ -77,17 +77,6 @@ class PostController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
@@ -95,7 +84,9 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post     = new Post;
+        $data = $post->getPostData($id);
+        return view('editpost', ['data' => $data]);
     }
 
     /**
@@ -107,7 +98,7 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        echo "Updating here" . $id;
     }
 
     /**

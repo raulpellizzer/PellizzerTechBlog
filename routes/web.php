@@ -67,8 +67,8 @@ Route::view('/posts/new', 'newpost')->name('createPost')->middleware('admin');
 */
 Route::post(
     '/posts/new/create',
-    [PostController::class,'create']
-    )->name('createUser')->middleware('admin');
+    [PostController::class, 'create']
+    )->middleware('admin');
 
 
 /*
@@ -76,7 +76,7 @@ Route::post(
 */
 Route::post(
     '/users',
-    [UserController::class,'create']
+    [UserController::class, 'create']
     )->name('createUser');
 
 
@@ -85,7 +85,7 @@ Route::post(
 */
 Route::post(
     '/login/authenticate',
-    [UserController::class,'authenticate']
+    [UserController::class, 'authenticate']
     )->name('authenticateUser');
 
 
@@ -94,7 +94,7 @@ Route::post(
 */
 Route::get(
     '/blog',
-    [PostController::class,'index']
+    [PostController::class, 'index']
     )->name('blogIndex');
 
 
@@ -103,7 +103,7 @@ Route::get(
 */
 Route::get(
     '/blog/post/{postId}',
-    [PostController::class,'show']
+    [PostController::class, 'show']
     );
 
 
@@ -113,7 +113,7 @@ Route::get(
 */
 Route::get(
     '/controlpanel/manageusers',
-    [ControlPanelController::class,'cpUserIndex']
+    [ControlPanelController::class, 'cpUserIndex']
     )->name('manageUsers')->middleware('admin');
 
 
@@ -123,7 +123,7 @@ Route::get(
 */
 Route::get(
     '/controlpanel/manageposts',
-    [ControlPanelController::class,'cpPostsIndex']
+    [ControlPanelController::class, 'cpPostsIndex']
     )->name('managePosts')->middleware('admin');
 
 
@@ -133,7 +133,7 @@ Route::get(
 */
 Route::post(
     '/controlpanel/manageusers/save',
-    [ControlPanelController::class,'updateUserStatus']
+    [ControlPanelController::class, 'updateUserStatus']
     )->middleware('admin');
 
 
@@ -143,23 +143,38 @@ Route::post(
 */
 Route::post(
     '/controlpanel/manageposts/save',
-    [ControlPanelController::class,'updatePostStatus']
+    [ControlPanelController::class, 'updatePostStatus']
+    )->middleware('admin');
+
+
+/*
+    /blog route: Edit data about specific post
+*/
+Route::get(
+    '/controlpanel/manageposts/edit/{postId}',
+    [PostController::class, 'edit']
+    )->name('editPost')->middleware('admin');
+
+
+/*
+    /posts/update/{postId}: Updates data about posts
+    Available only for users with admin privileges
+*/
+Route::post(
+    '/posts/update/{postId}',
+    [PostController::class, 'update']
     )->middleware('admin');
 
 
 /*
     /logout route: Logs user out of the application
 */
-Route::get('/logout', [UserController::class,'logout']);
+Route::get('/logout', [UserController::class, 'logout']);
 
 
 Route::get('/portfolio', function() {
     return 'Portfolio Route';
 });
-
-
-
-
 
 
 
