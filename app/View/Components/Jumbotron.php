@@ -48,7 +48,7 @@ class Jumbotron extends Component
         } else if ($this->type === "blogindex") {
             $this->display      = "Blogs";
             $this->paragraphOne = "Read about technology, security, development and much more!";
-            $this->paragraphTwo = "Hope you enjoy!";
+            $this->paragraphTwo = "";
         } else if ($this->type === "usermanagement") {
             $this->display      = "User Management - Control Panel";
             $this->paragraphOne = "Manage your users with ease";

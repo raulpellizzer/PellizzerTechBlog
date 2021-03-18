@@ -6,6 +6,8 @@ use App\Models\Categorie;
 use Exception;
 use Illuminate\Http\Request;
 
+use function PHPSTORM_META\type;
+
 class PostController extends Controller
 {
 
@@ -17,8 +19,13 @@ class PostController extends Controller
     public function index()
     {
         try {
-            $post  = new Post;
+            $post      = new Post;
+            $categorie = new Categorie;
+
+            $categories = $categorie->getCategories();
             $data = $post->getPublishedPosts();
+            array_push($data, $categories);
+
             return view('blogindex', ['data' => $data]);
 
         } catch (Exception $e) {
@@ -140,13 +147,27 @@ class PostController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Filter posts
      *
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function filter(Request $request)
     {
-        //
+        try {
+            $post       = new Post;
+            $categorie  = new Categorie;
+            $categories = $categorie->getCategories();
+
+            $inputs     = $request->all();
+            $data       = $post->filterPosts($inputs);
+            $data[sizeof($data)] = $categories;
+
+            return view('blogindex', ['data' => $data]);
+
+        } catch (Exception $e) {
+            session(['errorMessage' => $e->getMessage()]);
+            return redirect()->route('blogIndex')->with('viewPosts', 'error');
+        }
     }
 }
