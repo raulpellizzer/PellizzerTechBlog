@@ -45,7 +45,7 @@ Route::view('/register', 'register')->name('register');
 /*
     Render Contact View
 */
-Route::view('/contact', 'contact');
+Route::view('/contact', 'contact')->middleware('auth');
 
 
 /*
