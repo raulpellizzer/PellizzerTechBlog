@@ -24,7 +24,10 @@ class PostController extends Controller
 
             $categories = $categorie->getCategories();
             $data = $post->getPublishedPosts();
-            array_push($data, $categories);
+            $data[sizeof($data)] = $categories;
+
+            // echo "HERE";
+            // die;
 
             return view('blogindex', ['data' => $data]);
 

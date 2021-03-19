@@ -43,7 +43,7 @@ class Post extends Model
      */
     public function getPublishedPosts()
     {
-        $posts = DB::select('select * from posts where published = 1');
+        $posts = Post::where('published', 1)->paginate(5);
         return $posts;
     }
 
@@ -129,9 +129,9 @@ class Post extends Model
         if ($title && $subtitle && $category != 'All') {
             $posts = DB::table('posts')
                 ->where('title', 'like', '%' . $title . '%')
-                ->where('title', 'like', '%' . $title . '%')
-                ->where('category', $category)
-                ->get();
+                ->where('subtitle', 'like', '%' . $subtitle . '%')
+                ->where('category', $category)->paginate(5);
+                // ->get();
 
 
         } else if (!$title && $subtitle && $category != 'All') {
@@ -139,8 +139,8 @@ class Post extends Model
 
             $posts = DB::table('posts')
                 ->where('subtitle', 'like', '%' . $subtitle . '%')
-                ->where('category', $category)
-                ->get();
+                ->where('category', $category)->paginate(5);
+                // ->get();
 
 
         } else if ($title && !$subtitle && $category != 'All') {
@@ -148,16 +148,16 @@ class Post extends Model
 
             $posts = DB::table('posts')
                 ->where('title', 'like', '%' . $title . '%')
-                ->where('category', $category)
-                ->get();
+                ->where('category', $category)->paginate(5);
+                // ->get();
 
 
         } else if (!$title && !$subtitle && $category != 'All') {
             // echo "ONLY category";
 
             $posts = DB::table('posts')
-                ->where('category', $category)
-                ->get();
+                ->where('category', $category)->paginate(5);
+                // ->get();
 
 
         } else if ($title && $subtitle && $category == 'All') { 
@@ -165,30 +165,31 @@ class Post extends Model
 
             $posts = DB::table('posts')
                 ->where('title', 'like', '%' . $title . '%')
-                ->where('subtitle', 'like', '%' . $subtitle . '%')
-                ->get();
+                ->where('subtitle', 'like', '%' . $subtitle . '%')->paginate(5);
+                // ->get();
 
 
         } else if (!$title && $subtitle && $category == 'All') {
             // echo "Only subtitle";
 
             $posts = DB::table('posts')
-                ->where('subtitle', 'like', '%' . $subtitle . '%')
-                ->get();
+                ->where('subtitle', 'like', '%' . $subtitle . '%')->paginate(5);
+                // ->get();
 
 
         } else if ($title && !$subtitle && $category == 'All') {
             // echo "Only title";
 
             $posts = DB::table('posts')
-                ->where('title', 'like', '%' . $title . '%')
-                ->get();
+                ->where('title', 'like', '%' . $title . '%')->paginate(5);
+                // ->get();
 
 
         } else if (!$title && !$subtitle && $category == 'All') {
             // echo "NOTHING";
 
-            $posts = DB::select('select * from posts where published = 1');
+            // $posts = DB::select('select * from posts where published = 1');
+            $posts = Post::where('published', 1)->paginate(5);
 
             
         }

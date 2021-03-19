@@ -83,5 +83,10 @@
 
 @endfor
 
+<div class="container d-flex justify-content-center">
+  {{-- {{ $data->links() }} --}}
+  {{ $data->appends(request()->all())->links() }}
+</div>
+
 {{-- Footer --}}
 <x-footer/>
