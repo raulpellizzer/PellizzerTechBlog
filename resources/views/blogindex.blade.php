@@ -30,19 +30,19 @@
     <div class="form-row align-items-center">
       <div class="col-sm-4 my-1">
         <label class="sr-only" for="title">Title</label>
-        <input type="text" class="form-control" id="title" name="title" placeholder="Title">
+        <input type="text" class="form-control" id="title" name="title" placeholder="Title" value="{{ old('title') }}" >
       </div>
 
       <div class="col-sm-4 my-1">
         <label class="sr-only" for="subtitle">Subtitle</label>
         <div class="input-group">
-          <input type="text" class="form-control" id="subtitle" name="subtitle" placeholder="Subtitle">
+          <input type="text" class="form-control" id="subtitle" name="subtitle" placeholder="Subtitle" value="{{ old('subtitle') }}">
         </div>
       </div>
 
       <div class="col-sm-3 my-1">
         <div>
-            <select class="form-control" name="category" id="category">
+            <select class="form-control" name="category" id="category" >
               <option class="regular-text">All</option>
 
               @foreach ($data[sizeof($data) - 1] as $category)
@@ -82,11 +82,6 @@
   </div>
 
 @endfor
-
-<div class="container d-flex justify-content-center">
-  {{-- {{ $data->links() }} --}}
-  {{ $data->appends(request()->all())->links() }}
-</div>
 
 {{-- Footer --}}
 <x-footer/>

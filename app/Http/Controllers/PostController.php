@@ -16,7 +16,7 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         try {
             $post      = new Post;
@@ -25,9 +25,6 @@ class PostController extends Controller
             $categories = $categorie->getCategories();
             $data = $post->getPublishedPosts();
             $data[sizeof($data)] = $categories;
-
-            // echo "HERE";
-            // die;
 
             return view('blogindex', ['data' => $data]);
 
