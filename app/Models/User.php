@@ -161,13 +161,13 @@ class User extends Authenticatable
     {
         try {
             $checkBoxMarkedIds = $this->getMarkedCheckBoxIds($input);
-            $numberOfUsers     = DB::table('users')->select()->get();
-            
-            for ($i = 1; $i <= sizeof($numberOfUsers); $i++) { 
-                if (in_array($i, $checkBoxMarkedIds))
-                    DB::table('users')->where('id', $i)->update(['active' => 1]);
+            $userIds           = DB::table('users')->select('id')->get();
+
+            foreach ($userIds as $user) {
+                if (in_array($user->id, $checkBoxMarkedIds))
+                    DB::table('users')->where('id', $user->id)->update(['active' => 1]);
                 else
-                    DB::table('users')->where('id', $i)->update(['active' => 0]);
+                    DB::table('users')->where('id', $user->id)->update(['active' => 0]);
             }
 
             return true;

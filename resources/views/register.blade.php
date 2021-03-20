@@ -109,7 +109,6 @@
       <div class="padding-left">
         <p class="main-header-text mt-5"><strong>What am i registering for?</strong></p>
         <p class="regular-text">> Receive notifications by email whenever a new post is made</p>
-        <p class="regular-text">> Gain access and interact with others in the comment section of each post</p>
       </div>
     </div>
   </div>
