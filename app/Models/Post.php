@@ -80,13 +80,13 @@ class Post extends Model
     {
         try {
             $checkBoxMarkedIds = $this->getMarkedCheckBoxIds($input);
-            $numberOfPosts     = DB::table('posts')->select()->get();
-            
-            for ($i = 1; $i <= sizeof($numberOfPosts); $i++) { 
-                if (in_array($i, $checkBoxMarkedIds))
-                    DB::table('posts')->where('id', $i)->update(['published' => 1]);
+            $postIds           = DB::table('posts')->select('id')->get();
+
+            foreach ($postIds as $post) {
+                if (in_array($post->id, $checkBoxMarkedIds))
+                    DB::table('posts')->where('id', $post->id)->update(['published' => 1]);
                 else
-                    DB::table('posts')->where('id', $i)->update(['published' => 0]);
+                    DB::table('posts')->where('id', $post->id)->update(['published' => 0]);
             }
 
             return true;
