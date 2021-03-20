@@ -25,7 +25,7 @@ class Contact extends Mailable
     /**
      * The email message
      */
-    protected $emailMessage;
+    public $emailMessage;
 
     /**
      * Create a new message instance.

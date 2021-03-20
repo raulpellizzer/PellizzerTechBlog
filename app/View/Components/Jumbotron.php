@@ -65,6 +65,10 @@ class Jumbotron extends Component
             $this->display      = "Create a new categorie";
             $this->paragraphOne = "Categories give more meaning to your posts";
             $this->paragraphTwo = "";
+        } else if ($this->type === "email") {
+            $this->display      = "New message from blog contact";
+            $this->paragraphOne = "A new message has been sent to you";
+            $this->paragraphTwo = "";
         }
     }
 
