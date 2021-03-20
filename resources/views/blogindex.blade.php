@@ -26,38 +26,43 @@
 <form action="/blog" method="POST">
   @csrf
 
-  <div class="d-flex justify-content-center regular-text">
-    <div class="form-row align-items-center">
-      <div class="col-sm-4 my-1">
-        <label class="sr-only" for="title">Title</label>
-        <input type="text" class="form-control" id="title" name="title" placeholder="Title" value="{{ old('title') }}" >
-      </div>
+  <div class="container custom-border light-background-color custom-rounded-border rounded-pill">
 
-      <div class="col-sm-4 my-1">
-        <label class="sr-only" for="subtitle">Subtitle</label>
-        <div class="input-group">
-          <input type="text" class="form-control" id="subtitle" name="subtitle" placeholder="Subtitle" value="{{ old('subtitle') }}">
+    <div class="d-flex justify-content-center regular-text">
+      <div class="form-row align-items-center custom-border m-4 white-background-color custom-rounded-border rounded-lg">
+        <div class="col-sm-5 my-1">
+          <label class="sr-only" for="title">Title</label>
+          <input type="text" class="form-control" id="title" name="title" placeholder="Title" value="{{ old('title') }}" >
         </div>
-      </div>
-
-      <div class="col-sm-3 my-1">
-        <div>
-            <select class="form-control" name="category" id="category" >
-              <option class="regular-text">All</option>
-
-              @foreach ($data[sizeof($data) - 1] as $category)
-                <option class="regular-text"> <?php echo $category->category ?> </option>
-              @endforeach
-
-            </select>
+  
+        <div class="col-sm-4 my-1">
+          <label class="sr-only" for="subtitle">Subtitle</label>
+          <div class="input-group">
+            <input type="text" class="form-control" id="subtitle" name="subtitle" placeholder="Subtitle" value="{{ old('subtitle') }}">
+          </div>
         </div>
-      </div>
-
-      <div class="col-sm-5"></div>
-      <div class="col-sm-3 my-1 padding-left">
-        <button type="submit" class="btn btn-primary">Search</button>
+  
+        <div class="col-sm-3 my-1">
+          <div>
+              <select class="form-control" name="category" id="category" >
+                <option class="regular-text">All</option>
+  
+                @foreach ($data[sizeof($data) - 1] as $category)
+                  <option class="regular-text"> <?php echo $category->category ?> </option>
+                @endforeach
+  
+              </select>
+          </div>
+        </div>
+  
+        <div class="col-sm-5"></div>
+        <div class="col-sm-3 my-1 padding-left">
+          <button type="submit" class="btn btn-primary">Search</button>
+        </div>
       </div>
     </div>
+
+
   </div>
 </form><br>
 

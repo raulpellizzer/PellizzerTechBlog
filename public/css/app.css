@@ -4,6 +4,18 @@
     width: 100%;
 }
 
+.light-background-color {
+    background-color: rgb(167, 164, 164);
+}
+
+.white-background-color {
+    background-color: rgb(255, 255, 255);
+}
+
+.custom-rounded-border {
+    /* border-radius: 5%; */
+}
+
 .main-header-text {
     font-family: 'Inconsolata', monospace;
 }
@@ -73,4 +85,8 @@ input, label, select {
 textarea {
     white-space: pre-wrap;
     overflow-wrap: break-word;
+}
+
+.custom-border {
+    /* border:1px black solid; */
 }

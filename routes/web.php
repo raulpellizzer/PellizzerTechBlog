@@ -4,6 +4,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ControlPanelController;
 use App\Http\Controllers\CategorieController;
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -45,7 +46,7 @@ Route::view('/register', 'register')->name('register');
 /*
     Render Contact View
 */
-Route::view('/contact', 'contact')->middleware('auth');
+Route::view('/contact', 'contact')->name('contact')->middleware('auth');
 
 
 /*
@@ -188,13 +189,23 @@ Route::get(
 
 
 /*
-    /pcontrolpanel/createcategorie/save: Create a new categorie
+    /controlpanel/createcategorie/save: Create a new categorie
     Available only for users with admin privileges
 */
 Route::post(
     '/controlpanel/createcategorie/save',
     [CategorieController::class, 'store']
     )->middleware('admin');
+
+
+/*
+    /contact/sendmessage: Sends the contact email
+    Available only for authenticated users
+*/
+Route::post(
+    '/contact/sendmessage',
+    [ContactController::class, 'send']
+    )->middleware('auth');
 
 
 /*
