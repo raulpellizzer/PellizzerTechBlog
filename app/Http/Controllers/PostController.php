@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\Categorie;
-use Exception;
 use Illuminate\Http\Request;
+use App\Mail\Notification;
+use Illuminate\Support\Facades\Mail;
+use App\Models\User;
+use Exception;
 
 use function PHPSTORM_META\type;
 
@@ -45,7 +48,10 @@ class PostController extends Controller
     {
         if ($request->method() === "POST") {
             try {
-                $post = new Post;
+                $post   = new Post;
+                $user   = new User;
+                $emails = $user->getEmails();
+
                 $postData   = $request->only('title', 'subtitle', 'bodycontent', 'author', 'category');
                 $validation = $post->checkPostInDB($postData['title']);
 
@@ -56,6 +62,11 @@ class PostController extends Controller
                     $post->author   = $postData['author'];
                     $post->category = $postData['category'];
                     $post->save();
+
+                    foreach ($emails as $recipient) {
+                        Mail::to($recipient->email)->send(new Notification($post));
+                    }
+
                     return redirect()->route('createPost')->with('createPostStatus', 'success');
                 } else
                     return redirect()->route('createPost')->with('createPostStatus', 'postAlreadyExists');
@@ -86,7 +97,7 @@ class PostController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Show the form for editing the post
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
@@ -103,7 +114,7 @@ class PostController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Update post data
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  int  $id

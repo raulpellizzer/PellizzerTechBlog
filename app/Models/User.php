@@ -84,6 +84,17 @@ class User extends Authenticatable
     }
 
     /**
+     * Retrieves all emails from active users
+     *
+     * @return array
+     */
+    public function getEmails()
+    {
+        $emails = DB::select('select email from users where active = 1');
+        return $emails;
+    }
+
+    /**
      * Encrypts string
      *
      * @param  string  $password

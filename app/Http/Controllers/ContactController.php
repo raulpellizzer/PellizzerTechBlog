@@ -32,15 +32,4 @@ class ContactController extends Controller
             return redirect()->route('contact')->with('messagestatus', 'error');
         }
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 }

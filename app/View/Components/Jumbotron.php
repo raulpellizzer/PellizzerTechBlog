@@ -37,38 +37,51 @@ class Jumbotron extends Component
             $this->display      = "Contact Us";
             $this->paragraphOne = "Got any questions, suggestions or comments? Please, feel free to contact us! We will be happy to hear from you";
             $this->paragraphTwo = "We will reply as soon as possible";
+
         } else if ($this->type === "controlpanel") {
             $this->display      = "Pellizzer Tech Blog - Control Panel";
             $this->paragraphOne = "Manage your users, posts and all your application from here";
             $this->paragraphTwo = "Remember: With great powers comes great responsibility";
+
         } else if ($this->type === "newpost") {
             $this->display      = "Create a New Post";
             $this->paragraphOne = "Use the fields below to create your new, awesome post!";
             $this->paragraphTwo = "The body supports up to 65.535 characters";
+
         } else if ($this->type === "blogindex") {
             $this->display      = "Blogs";
             $this->paragraphOne = "Read about technology, security, development and much more!";
             $this->paragraphTwo = "";
+
         } else if ($this->type === "usermanagement") {
             $this->display      = "User Management - Control Panel";
             $this->paragraphOne = "Manage your users with ease";
             $this->paragraphTwo = "Grant access, check their data, activate or deactivate";
+
         } else if ($this->type === "postmanagement") {
             $this->display      = "Post Management - Control Panel";
             $this->paragraphOne = "Manage your posts with ease";
             $this->paragraphTwo = "Create, edit, delete or simply deactivate";
+
         } else if ($this->type === "editpost") {
             $this->display      = "Editing your post";
             $this->paragraphOne = "Edit your content here";
             $this->paragraphTwo = "";
+
         } else if ($this->type === "createcategorie") {
             $this->display      = "Create a new categorie";
             $this->paragraphOne = "Categories give more meaning to your posts";
             $this->paragraphTwo = "";
+
         } else if ($this->type === "email") {
             $this->display      = "New message from blog contact";
             $this->paragraphOne = "A new message has been sent to you";
             $this->paragraphTwo = "";
+            
+        } else if ($this->type === "notification") {
+            $this->display      = "New Post Notification!";
+            $this->paragraphOne = "A new post has just been created";
+            $this->paragraphTwo = "Check it out!";
         }
     }
 

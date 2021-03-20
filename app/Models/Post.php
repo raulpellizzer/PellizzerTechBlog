@@ -43,7 +43,6 @@ class Post extends Model
      */
     public function getPublishedPosts()
     {
-        // $posts = Post::where('published', 1)->paginate(5);
         $posts = DB::select('select * from posts where published = 1');
         return $posts;
     }
@@ -136,7 +135,6 @@ class Post extends Model
 
 
         } else if (!$title && $subtitle && $category != 'All') {
-            // echo "All filled BUT title";
 
             $posts = DB::table('posts')
                 ->where('subtitle', 'like', '%' . $subtitle . '%')
@@ -145,7 +143,6 @@ class Post extends Model
 
 
         } else if ($title && !$subtitle && $category != 'All') {
-            // echo "All filled BUT subtitle";
 
             $posts = DB::table('posts')
                 ->where('title', 'like', '%' . $title . '%')
@@ -154,7 +151,6 @@ class Post extends Model
 
 
         } else if (!$title && !$subtitle && $category != 'All') {
-            // echo "ONLY category";
 
             $posts = DB::table('posts')
                 ->where('category', $category)
@@ -162,7 +158,6 @@ class Post extends Model
 
 
         } else if ($title && $subtitle && $category == 'All') { 
-            // echo "Only title and subtitle";
 
             $posts = DB::table('posts')
                 ->where('title', 'like', '%' . $title . '%')
@@ -171,7 +166,6 @@ class Post extends Model
 
 
         } else if (!$title && $subtitle && $category == 'All') {
-            // echo "Only subtitle";
 
             $posts = DB::table('posts')
                 ->where('subtitle', 'like', '%' . $subtitle . '%')
@@ -179,7 +173,6 @@ class Post extends Model
 
 
         } else if ($title && !$subtitle && $category == 'All') {
-            // echo "Only title";
 
             $posts = DB::table('posts')
                 ->where('title', 'like', '%' . $title . '%')
@@ -187,12 +180,7 @@ class Post extends Model
 
 
         } else if (!$title && !$subtitle && $category == 'All') {
-            // echo "NOTHING";
-
-            // $posts = DB::select('select * from posts where published = 1');
             $posts = Post::where('published', 1);
-
-            
         }
 
         return $posts;
