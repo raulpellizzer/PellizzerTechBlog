@@ -21,8 +21,8 @@ class ContactController extends Controller
         try {
             $input        = $request->all();
             $emailFrom    = Auth::user()->email;
-            $emailTo      = "raul1.pellizzer1@gmail.com";
             $userNameFrom = Auth::user()->name;
+            $emailTo      = "pellizdeva7@gmail.com";
 
             Mail::to($emailTo)->send(new Contact($emailFrom, $userNameFrom, $input['contactform']));
             return redirect()->route('contact')->with('messagestatus', 'success');

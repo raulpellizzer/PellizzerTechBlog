@@ -15,12 +15,12 @@ class Contact extends Mailable
     /**
      * The username sender
      */
-    protected $userFrom;
+    public $userFrom;
 
     /**
      * The email sender
      */
-    protected $emailFrom;
+    public $emailFrom;
 
     /**
      * The email message
