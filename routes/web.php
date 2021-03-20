@@ -204,7 +204,7 @@ Route::post(
 */
 Route::post(
     '/contact/sendmessage',
-    [ContactController::class, 'send']
+    [ContactController::class, 'sendContactMessage']
     )->middleware('auth');
 
 

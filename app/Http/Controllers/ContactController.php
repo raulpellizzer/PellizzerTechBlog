@@ -16,7 +16,7 @@ class ContactController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function send(Request $request)
+    public function sendContactMessage(Request $request)
     {
         try {
             $input        = $request->all();
@@ -31,12 +31,6 @@ class ContactController extends Controller
             session(['errorMessage' => $e->getMessage()]);
             return redirect()->route('contact')->with('messagestatus', 'error');
         }
-
-
-        // echo "Aqui: " . $input['contactform'] . "<br>";
-        // echo "emailFrom: " . $emailFrom . "<br>";
-        // echo "userNameFrom: " . $userNameFrom . "<br>";
-        // die;
     }
 
     /**
