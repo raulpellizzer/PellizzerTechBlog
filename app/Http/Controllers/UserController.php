@@ -65,11 +65,15 @@ class UserController extends Controller
             $auth         = $user->authenticate($credentials);
 
             if ($auth) {
-                $userIsActive = $user->isUserActive($credentials['name']);
+                $userIsActive      = $user->isUserActive($credentials['name']);
+                $accoutWasVerified = $user->wasAccountVerified($credentials['name']);
 
-                if ($userIsActive[0]->active)
-                    return redirect()->route('home')->with('authStatus', 'success');
-                else
+                if ($userIsActive[0]->active) {
+                    if ($accoutWasVerified[0]->registration_verified) 
+                        return redirect()->route('home')->with('authStatus', 'success');
+                    else
+                        return redirect()->route('login')->with('authStatus', 'accountNotVerified');
+                } else
                     return redirect()->route('login')->with('authStatus', 'disabledUser');
             } else
                 return redirect()->route('login')->with('authStatus', 'invalidCredentials');

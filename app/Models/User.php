@@ -119,12 +119,24 @@ class User extends Authenticatable
     /**
      * Check if user account is active
      *
-     * @param  array  $credentials
-     * @return boolean
+     * @param  string  $name
+     * @return array
      */
     public function isUserActive($name)
     {
         $status = DB::select('select active from users where name = :name', ['name' => $name]);
+        return $status;
+    }
+
+    /**
+     * Check if user account was verified through email
+     *
+     * @param  string  $name
+     * @return array
+     */
+    public function wasAccountVerified($name)
+    {
+        $status = DB::select('select registration_verified from users where name = :name', ['name' => $name]);
         return $status;
     }
 

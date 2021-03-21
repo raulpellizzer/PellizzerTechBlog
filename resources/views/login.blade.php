@@ -18,6 +18,17 @@
   </div>
 @endif
 
+@if (session('authStatus') === "accountNotVerified")
+  <div class="container">
+    <div class="alert alert-danger text-center regular-text fade show alert-dismissible" role="alert">
+      This account has not yet been verified. Please activate it via your email
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div>
+@endif
+
 @if (session('authStatus') === "disabledUser")
   <div class="container">
     <div class="alert alert-danger text-center regular-text fade show alert-dismissible" role="alert">
