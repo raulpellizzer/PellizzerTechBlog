@@ -1,5 +1,5 @@
 // Slide up alerts when shown
-$( ".alert" ).delay(3000).slideUp("slow");
+$( ".alert" ).delay(5000).slideUp("slow");
 
 // Keep track of characters left in Create New Post view
 $('#bodycontent').keyup(function() {    

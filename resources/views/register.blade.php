@@ -9,7 +9,7 @@
 @if (session('registerStatus') === "success")
   <div class="container">
     <div class="alert alert-success text-center regular-text fade show alert-dismissible" role="alert">
-      User successfully registered!
+      User successfully registered! Verifiy your account using the link provided by email to login
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -109,6 +109,7 @@
       <div class="padding-left">
         <p class="main-header-text mt-5"><strong>What am i registering for?</strong></p>
         <p class="regular-text">> Receive notifications by email whenever a new post is made</p>
+        <p class="regular-text">> After registering, <strong>verify your account using the link provided by email</strong></p>
       </div>
     </div>
   </div>
