@@ -78,9 +78,7 @@
                   <label class="regular-text" for="password">Password</label>
                   <input type="password" class="form-control" id="password" name="password" placeholder="Password" required>
                 </div>
-
-                <a href="#" class="float-right mb-3">Forgot your password?</a>
-        
+                        
                 <div class="col-sm d-flex justify-content-center">
                     <button type="submit" class="btn btn-primary regular-text">Sign in</button>
                 </div>

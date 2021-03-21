@@ -95,6 +95,15 @@ Route::get(
 
 
 /*
+    /user/unsubscribe/{userId} route: Unsubscribes (deletes) user
+*/
+Route::get(
+    '/user/unsubscribe/{userId}',
+    [UserController::class, 'delete']
+)->middleware('auth');
+
+
+/*
     /login/authenticate route: Authenticate user
 */
 Route::post(

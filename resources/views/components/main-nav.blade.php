@@ -55,7 +55,38 @@
             </li>
           </ul>
         @endif
-      @endif
 
+        <ul class="navbar-nav">
+          <li class="nav-item m-2 mt-3">
+            <form action="{{ url('/user/unsubscribe') }}/<?php echo Auth::user()->id ?>" method="GET">
+              <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#unsubscribeModal" >Unsubscribe</button>
+
+              <!-- Modal -->
+              <div class="modal fade" id="unsubscribeModal" tabindex="-1" role="dialog" aria-labelledby="unsubscribeModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="unsubscribeModalLabel">Unsubscribe to blog</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      Are you sure you want to cancel your subscription? You will no longer receive notifications from us.
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="submit" class="btn btn-primary">Unsubscribe</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </form>
+          </li>
+        </ul>
+
+      @endif
+      
     </div>
 </nav>

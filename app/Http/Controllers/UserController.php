@@ -103,7 +103,6 @@ class UserController extends Controller
         }
     }
 
-
     /**
      * Logs user out
      * 
@@ -116,5 +115,23 @@ class UserController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect('/');
+    }
+
+    /**
+     * Unsubscribes an user
+     * 
+     * @param request request data
+     * @param integer user id
+     * @return \Illuminate\Http\Response
+     */
+    public function delete(Request $request, $id)
+    {
+        try {
+            User::destroy($id);
+            $this->logout($request);
+            return redirect()->route('home')->with('userStatus', 'deleted');
+        } catch (Exception $e) {
+            return redirect()->route('home')->with('userStatus', 'errorInOperation');
+        }
     }
 }
