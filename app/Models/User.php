@@ -90,7 +90,7 @@ class User extends Authenticatable
      */
     public function getEmails()
     {
-        $emails = DB::select('select email from users where active = 1');
+        $emails = DB::select('select email from users where active = 1 and registration_verified = 1');
         return $emails;
     }
 
@@ -204,5 +204,17 @@ class User extends Authenticatable
         }
 
         return $markedIds;
+    }
+
+    /**
+     * Retrieves user ID
+     *
+     * @param  string  $name
+     * @return integer
+     */
+    public function getUserId($name)
+    {
+        $id = DB::select('select id from users where name = :name', ['name' => $name]);
+        return $id[0]->id;
     }
 }

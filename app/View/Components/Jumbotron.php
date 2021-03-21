@@ -82,6 +82,10 @@ class Jumbotron extends Component
             $this->display      = "New Post Notification!";
             $this->paragraphOne = "A new post has just been created";
             $this->paragraphTwo = "Check it out!";
+        } else if ($this->type === "accountverification") {
+            $this->display      = "Registration to Pellizzer Tech Blog";
+            $this->paragraphOne = "Verify your account to log in";
+            $this->paragraphTwo = "If you dont recognize this action, please ignore this email";
         }
     }
 

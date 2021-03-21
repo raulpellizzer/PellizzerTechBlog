@@ -86,6 +86,15 @@ Route::post(
 
 
 /*
+    /users/verify/newuser/{userId} route: Verifies user account through email
+*/
+Route::get(
+    '/users/verify/newuser/{userId}',
+    [UserController::class, 'verifyAccount']
+);
+
+
+/*
     /login/authenticate route: Authenticate user
 */
 Route::post(

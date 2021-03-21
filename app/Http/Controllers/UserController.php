@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
+use App\Mail\Registration;
+use Illuminate\Support\Facades\Mail;
+
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
@@ -14,7 +17,6 @@ class UserController extends Controller
      * Register a new user
      * 
      * @param request request data
-     *
      * @return \Illuminate\Http\Response
      */
     public function create(Request $request)
@@ -35,6 +37,10 @@ class UserController extends Controller
                         $user->password    = $encryptedPassword;
                         $user->email       = $credentials['email'];
                         $user->save();
+
+                        $userId = $user->getUserId($user->name);
+                        Mail::to($user->email)->send(new Registration($user->name, $userId));
+
                         return redirect()->route('register')->with('registerStatus', 'success');
                     } else
                         return redirect()->route('register')->with('registerStatus', 'userExists');
@@ -52,7 +58,6 @@ class UserController extends Controller
      * Authenticates user
      * 
      * @param request request data
-     *
      * @return \Illuminate\Http\Response
      */
     public function authenticate(Request $request)
@@ -81,10 +86,28 @@ class UserController extends Controller
     }
 
     /**
+     * Verifies user account
+     * 
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function verifyAccount($id)
+    {
+        try {
+            $user = User::find($id);
+            $user->registration_verified = 1;
+            $user->save();
+            return redirect()->route('login')->with('authStatus', 'accountVerified');
+        } catch (Exception $e) {
+            return redirect()->route('login')->with('authStatus', 'errorInOperation');
+        }
+    }
+
+
+    /**
      * Logs user out
      * 
      * @param request request data
-     *
      * @return \Illuminate\Http\Response
      */
     public function logout(Request $request)

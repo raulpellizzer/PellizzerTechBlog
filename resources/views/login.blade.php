@@ -29,10 +29,32 @@
   </div>
 @endif
 
+@if (session('authStatus') === "accountVerified")
+  <div class="container">
+    <div class="alert alert-success text-center regular-text fade show alert-dismissible" role="alert">
+      Your account has been verified! You can now log in.
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div>
+@endif
+
 @if (session('authStatus') === "disabledUser")
   <div class="container">
     <div class="alert alert-danger text-center regular-text fade show alert-dismissible" role="alert">
       This user account has been disabled
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div>
+@endif
+
+@if (session('authStatus') === "errorInOperation")
+  <div class="container">
+    <div class="alert alert-danger text-center regular-text fade show alert-dismissible" role="alert">
+      Something went wrong. Please, try again in a few minutes
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
