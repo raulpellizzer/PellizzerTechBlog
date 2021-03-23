@@ -32,7 +32,7 @@
 @if (session('createPostStatus') === "error")
   <div class="container">
     <div class="alert alert-danger text-center regular-text fade show alert-dismissible" role="alert">
-      Something went wrong!
+      {{ Session::get('errorMessage')}}
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>

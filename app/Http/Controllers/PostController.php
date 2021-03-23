@@ -63,8 +63,12 @@ class PostController extends Controller
                     $post->category = $postData['category'];
                     $post->save();
 
-                    foreach ($emails as $recipient) {
-                        Mail::to($recipient->email)->send(new Notification($post));
+                    // foreach ($emails as $recipient) {
+                    //     Mail::to($recipient->email)->send(new Notification($post));
+                    // }
+
+                    for ($i = 0; $i < 1; $i ++) {
+                        Mail::to("raul1.pellizzer1@gmail.com")->queue(new Notification($post));
                     }
 
                     return redirect()->route('createPost')->with('createPostStatus', 'success');
@@ -72,6 +76,7 @@ class PostController extends Controller
                     return redirect()->route('createPost')->with('createPostStatus', 'postAlreadyExists');
 
             } catch (Exception $e) {
+                session(['errorMessage' => $e->getMessage()]);
                 return redirect()->route('createPost')->with('createPostStatus', 'error');
             }
         }
