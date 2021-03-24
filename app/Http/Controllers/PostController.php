@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\Categorie;
 use Illuminate\Http\Request;
-use App\Mail\Notification;
 use App\Jobs\SendEmail;
 use App\Models\User;
 use Exception;
