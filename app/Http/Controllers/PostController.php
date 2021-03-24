@@ -6,7 +6,6 @@ use App\Models\Categorie;
 use Illuminate\Http\Request;
 use App\Mail\Notification;
 use App\Jobs\SendEmail;
-use Illuminate\Support\Facades\Mail;
 use App\Models\User;
 use Exception;
 
@@ -62,25 +61,12 @@ class PostController extends Controller
                     $post->content  = $postData['bodycontent'];
                     $post->author   = $postData['author'];
                     $post->category = $postData['category'];
-                    // $post->save();
+                    $post->save();
 
-                    // $details = ['email' => 'raul1.pellizzer1@gmail.com'];
-                    // foreach ($emails as $recipient) {
-                    //     $notification = new Notification($post);
-                    //     // Mail::to($recipient->email)->send($notification); // adapt to new version
-                    //     SendEmail::dispatch($notification ,$recipient);
-                    // }
-
-                    for ($i = 0; $i < 5; $i ++) {
-                        $details = ['email' => 'raul1.pellizzer1@gmail.com', 'post' => $post];
+                    foreach ($emails as $recipient) {
+                        $details = ['email' => $recipient, 'post' => $post];
                         SendEmail::dispatch($details);
                     }
-                    
-
-                    // $details = ['email' => 'raul1.pellizzer1@gmail.com'];
-                    // for ($i = 0; $i < 3; $i ++) {
-                    //     SendEmail::dispatch($details);
-                    // }
 
                     return redirect()->route('createPost')->with('createPostStatus', 'success');
                 } else
