@@ -34,7 +34,7 @@ class SendEmail implements ShouldQueue
      */
     public function handle()
     {
-        $email = new Notification();
+        $email = new Notification($this->details['post']);
         Mail::to($this->details['email'])->send($email);
     }
 }

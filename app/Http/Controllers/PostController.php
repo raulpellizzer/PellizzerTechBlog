@@ -62,7 +62,7 @@ class PostController extends Controller
                     $post->content  = $postData['bodycontent'];
                     $post->author   = $postData['author'];
                     $post->category = $postData['category'];
-                    $post->save();
+                    // $post->save();
 
                     // $details = ['email' => 'raul1.pellizzer1@gmail.com'];
                     // foreach ($emails as $recipient) {
@@ -71,17 +71,16 @@ class PostController extends Controller
                     //     SendEmail::dispatch($notification ,$recipient);
                     // }
 
-                    // for ($i = 0; $i < 20; $i ++) {
-                    //     $notification = new Notification($post);
-                    //     $details = ['email' => 'raul1.pellizzer1@gmail.com', 'notification' => $notification];
-                    //     SendEmail::dispatch($details);
-                    // }
-                    
-
-                    $details = ['email' => 'raul1.pellizzer1@gmail.com'];
-                    for ($i = 0; $i < 10; $i ++) {
+                    for ($i = 0; $i < 5; $i ++) {
+                        $details = ['email' => 'raul1.pellizzer1@gmail.com', 'post' => $post];
                         SendEmail::dispatch($details);
                     }
+                    
+
+                    // $details = ['email' => 'raul1.pellizzer1@gmail.com'];
+                    // for ($i = 0; $i < 3; $i ++) {
+                    //     SendEmail::dispatch($details);
+                    // }
 
                     return redirect()->route('createPost')->with('createPostStatus', 'success');
                 } else

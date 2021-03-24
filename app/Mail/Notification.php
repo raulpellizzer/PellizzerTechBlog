@@ -19,9 +19,14 @@ class Notification extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($post)
     {
-        // $this->post      = $post;
+        $this->post = $post;
+
+        // var_dump($post["title"]);
+        // var_dump(json_decode($post));
+        // die;
+
         $this->emailFrom = "pellizdeva7@gmail.com";
     }
 
