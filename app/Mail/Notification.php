@@ -19,9 +19,9 @@ class Notification extends Mailable
      *
      * @return void
      */
-    public function __construct(Post $post)
+    public function __construct()
     {
-        $this->post      = $post;
+        // $this->post      = $post;
         $this->emailFrom = "pellizdeva7@gmail.com";
     }
 
@@ -33,6 +33,7 @@ class Notification extends Mailable
     public function build()
     {
         return $this->from($this->emailFrom)
+            ->subject('New Post!')
             ->view('emails.notification');
     }
 }
