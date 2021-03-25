@@ -28,6 +28,7 @@
 - Blog
 - Register: By subscribing to the application you will receive notifications every time a new post is published.
 - - <p><strong>We will never ask for your credentials neither share them with anyone else.</strong></p>
+- Login: You must be logged in to send a message through the contact page.
 - Contact: Send a message to the development team.
 
 <br>
