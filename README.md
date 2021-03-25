@@ -6,6 +6,10 @@
 
 <br><br>
 
+# Link: Available Soon
+
+<br>
+
 # What is Pellizzer Tech Blog?
 
 - Personal website and newsletter about IT themes, on a weekly basis.
@@ -20,7 +24,17 @@
 
 <br>
 
-## Subscribe, become an IT security enthusiastic and, most important, have a wonderful journey along the way, learning new things every day!
+# Features
+- Blog
+- Register: By subscribing to the application you will receive notifications everytime a new post is published.
+- - <p><strong>We will never ask for your credentials neither share them with anyone else.</strong></p>
+- Contact: Send a message to the development team 
+
+<br>
+
+## <p style="font-style:italic">Subscribe, become an IT security enthusiastic and, most important, have a wonderful journey along the way, learning new things every day!</p>
+
+
 
 
 

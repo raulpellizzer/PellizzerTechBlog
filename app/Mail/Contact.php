@@ -46,8 +46,8 @@ class Contact extends Mailable
      */
     public function build()
     {
-
         return $this->from($this->emailFrom)
-                ->view('emails.email');
+            ->subject('New Message!')
+            ->view('emails.email');
     }
 }

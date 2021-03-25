@@ -41,6 +41,7 @@ class Registration extends Mailable
     public function build()
     {
         return $this->from($this->emailFrom)
+            ->subject('Welcome!')
             ->view('emails.registration');
     }
 }

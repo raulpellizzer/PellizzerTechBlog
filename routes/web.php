@@ -230,8 +230,3 @@ Route::post(
     /logout route: Logs user out of the application
 */
 Route::get('/logout', [UserController::class, 'logout']);
-
-
-
-// REMOVE LATER
-// throw new Exception("Value must be 1 or below");

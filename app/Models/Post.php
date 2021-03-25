@@ -135,7 +135,6 @@ class Post extends Model
 
 
         } else if (!$title && $subtitle && $category != 'All') {
-
             $posts = DB::table('posts')
                 ->where('subtitle', 'like', '%' . $subtitle . '%')
                 ->where('category', $category)
@@ -143,7 +142,6 @@ class Post extends Model
 
 
         } else if ($title && !$subtitle && $category != 'All') {
-
             $posts = DB::table('posts')
                 ->where('title', 'like', '%' . $title . '%')
                 ->where('category', $category)
@@ -151,14 +149,12 @@ class Post extends Model
 
 
         } else if (!$title && !$subtitle && $category != 'All') {
-
             $posts = DB::table('posts')
                 ->where('category', $category)
                 ->get();
 
 
         } else if ($title && $subtitle && $category == 'All') { 
-
             $posts = DB::table('posts')
                 ->where('title', 'like', '%' . $title . '%')
                 ->where('subtitle', 'like', '%' . $subtitle . '%')
@@ -166,14 +162,12 @@ class Post extends Model
 
 
         } else if (!$title && $subtitle && $category == 'All') {
-
             $posts = DB::table('posts')
                 ->where('subtitle', 'like', '%' . $subtitle . '%')
                 ->get();
 
 
         } else if ($title && !$subtitle && $category == 'All') {
-
             $posts = DB::table('posts')
                 ->where('title', 'like', '%' . $title . '%')
                 ->get();
