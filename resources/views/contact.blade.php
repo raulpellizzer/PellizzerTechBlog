@@ -29,6 +29,17 @@
   </div>
 @endif
 
+@if (session('messagestatus') === "noMessageProvided")
+  <div class="container">
+    <div class="alert alert-danger text-center regular-text fade show alert-dismissible" role="alert">
+      Please enter your message before hitting the Send button
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div>
+@endif
+
 {{-- Contact Form --}}
 <form action="{{ url('/contact/sendmessage') }}" method="POST">
     @csrf
@@ -36,7 +47,7 @@
     <div class="container regular-text">
         <div class="form-group">
             <label for="contactform">My comment</label>
-            <textarea class="form-control" id="contactform" name="contactform" rows="10"></textarea>
+            <textarea class="form-control" id="contactform" name="contactform" rows="10" required></textarea>
         </div>
 
         <div class="col-sm d-flex justify-content-center">

@@ -19,13 +19,17 @@ class ContactController extends Controller
     public function sendContactMessage(Request $request)
     {
         try {
-            $input        = $request->all();
-            $emailFrom    = Auth::user()->email;
-            $userNameFrom = Auth::user()->name;
-            $emailTo      = "pellizdeva7@gmail.com";
+            $userMessage  = trim($request->only('contactform')['contactform']);
 
-            Mail::to($emailTo)->send(new Contact($emailFrom, $userNameFrom, $input['contactform']));
-            return redirect()->route('contact')->with('messagestatus', 'success');
+            if ($userMessage) {
+                $emailFrom    = Auth::user()->email;
+                $userNameFrom = Auth::user()->name;
+                $emailTo      = "pellizdeva7@gmail.com";
+
+                Mail::to($emailTo)->send(new Contact($emailFrom, $userNameFrom, $userMessage));
+                return redirect()->route('contact')->with('messagestatus', 'success');
+            } else
+                return redirect()->route('contact')->with('messagestatus', 'noMessageProvided');
 
         } catch (Exception $e) {
             session(['errorMessage' => $e->getMessage()]);
