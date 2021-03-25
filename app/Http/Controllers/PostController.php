@@ -55,19 +55,24 @@ class PostController extends Controller
                 $validation = $post->checkPostInDB($postData['title']);
 
                 if ($validation) {
-                    $post->title    = $postData['title'];
-                    $post->subtitle = $postData['subtitle'];
-                    $post->content  = $postData['bodycontent'];
-                    $post->author   = $postData['author'];
+                    $post->title    = trim($postData['title']);
+                    $post->subtitle = trim($postData['subtitle']);
+                    $post->content  = trim($postData['bodycontent']);
+                    $post->author   = trim($postData['author']);
                     $post->category = $postData['category'];
-                    $post->save();
 
-                    foreach ($emails as $recipient) {
-                        $details = ['email' => $recipient, 'post' => $post];
-                        SendEmail::dispatch($details);
-                    }
+                    if ($post->title && $post->subtitle && $post->content && $post->author && $post->category) {
+                        $post->save();
 
-                    return redirect()->route('createPost')->with('createPostStatus', 'success');
+                        foreach ($emails as $recipient) {
+                            $details = ['email' => $recipient, 'post' => $post];
+                            SendEmail::dispatch($details);
+                        }
+
+                        return redirect()->route('createPost')->with('createPostStatus', 'success');
+                    } else
+                        return redirect()->route('createPost')->with('createPostStatus', 'missingData');
+
                 } else
                     return redirect()->route('createPost')->with('createPostStatus', 'postAlreadyExists');
 

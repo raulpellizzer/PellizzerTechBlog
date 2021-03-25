@@ -29,6 +29,17 @@
   </div>
 @endif
 
+@if (session('createPostStatus') === "missingData")
+  <div class="container">
+    <div class="alert alert-danger text-center regular-text fade show alert-dismissible" role="alert">
+      Please provide data to all fields.
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div>
+@endif
+
 @if (session('createPostStatus') === "error")
   <div class="container">
     <div class="alert alert-danger text-center regular-text fade show alert-dismissible" role="alert">
