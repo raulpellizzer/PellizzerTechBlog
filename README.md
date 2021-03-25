@@ -26,9 +26,9 @@
 
 # Features
 - Blog
-- Register: By subscribing to the application you will receive notifications everytime a new post is published.
+- Register: By subscribing to the application you will receive notifications every time a new post is published.
 - - <p><strong>We will never ask for your credentials neither share them with anyone else.</strong></p>
-- Contact: Send a message to the development team 
+- Contact: Send a message to the development team.
 
 <br>
 
