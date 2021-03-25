@@ -14,12 +14,12 @@
           <a class="nav-link" data-toggle="tooltip" data-placement="top" title="Access Blog" href="{{ url('/blog') }}">Blog</a>
         </li>
 
-        @if(!Auth::check() || !auth()->user()->isUserActive(Auth::user()->name)[0]->active)
+        @if(!Auth::check() || !auth()->user()->isUserActive(Auth::user()->name)[0]->active || !auth()->user()->wasAccountVerified(Auth::user()->name)[0]->registration_verified)
           <li class="nav-item">
             <a class="nav-link" data-toggle="tooltip" data-placement="top" title="Login to Website" href="{{ url('/login') }}">Login</a>
           </li>
         @else
-          @if (auth()->user()->isUserActive(Auth::user()->name)[0]->active)
+          @if (auth()->user()->isUserActive(Auth::user()->name)[0]->active && auth()->user()->wasAccountVerified(Auth::user()->name)[0]->registration_verified)
             <li class="nav-item">
               <a class="nav-link" data-toggle="tooltip" data-placement="top" title="Login to Website" href="{{ url('/logout') }}">Logout</a>
             </li>
@@ -39,7 +39,7 @@
         </li>
       </ul>
 
-      @if (Auth::check() && auth()->user()->isUserActive(Auth::user()->name)[0]->active)
+      @if (Auth::check() && auth()->user()->isUserActive(Auth::user()->name)[0]->active && auth()->user()->wasAccountVerified(Auth::user()->name)[0]->registration_verified)
         <ul class="navbar-nav">
           <li class="nav-item">
             <span class="lead regular-text">Welcome, {{ Auth::user()->name }} </span>
