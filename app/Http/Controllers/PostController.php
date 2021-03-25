@@ -133,13 +133,17 @@ class PostController extends Controller
                 $post           = Post::find($id);
                 $postData       = $request->only('title', 'subtitle', 'bodycontent', 'author', 'category');
 
-                $post->title    = $postData['title'];
-                $post->subtitle = $postData['subtitle'];
-                $post->content  = $postData['bodycontent'];
-                $post->author   = $postData['author'];
+                $post->title    = trim($postData['title']);
+                $post->subtitle = trim($postData['subtitle']);
+                $post->content  = trim($postData['bodycontent']);
+                $post->author   = trim($postData['author']);
                 $post->category = $postData['category'];
-                $post->save();
-                return redirect()->route('managePosts')->with('updatePost', 'success');
+
+                if ($post->title && $post->subtitle && $post->content && $post->author && $post->category) {
+                    $post->save();
+                    return redirect()->route('managePosts')->with('updatePost', 'success');
+                } else
+                    return redirect()->route('managePosts')->with('updatePost', 'missingData');
 
             } catch (Exception $e) {
                 session(['errorMessage' => $e->getMessage()]);
