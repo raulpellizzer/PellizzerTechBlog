@@ -125,7 +125,6 @@ class Post extends Model
         $subtitle = trim($inputs['subtitle']);
         $category = trim($inputs['category']);
 
-
         if ($title && $subtitle && $category != 'All') {
             $posts = DB::table('posts')
                 ->where('title', 'like', '%' . $title . '%')
@@ -154,27 +153,27 @@ class Post extends Model
                 ->get();
 
 
-        } else if ($title && $subtitle && $category == 'All') { 
+        } else if ($title && $subtitle && $category === 'All') { 
             $posts = DB::table('posts')
                 ->where('title', 'like', '%' . $title . '%')
                 ->where('subtitle', 'like', '%' . $subtitle . '%')
                 ->get();
 
 
-        } else if (!$title && $subtitle && $category == 'All') {
+        } else if (!$title && $subtitle && $category === 'All') {
             $posts = DB::table('posts')
                 ->where('subtitle', 'like', '%' . $subtitle . '%')
                 ->get();
 
 
-        } else if ($title && !$subtitle && $category == 'All') {
+        } else if ($title && !$subtitle && $category === 'All') {
             $posts = DB::table('posts')
                 ->where('title', 'like', '%' . $title . '%')
                 ->get();
 
 
-        } else if (!$title && !$subtitle && $category == 'All') {
-            $posts = Post::where('published', 1);
+        } else if (!$title && !$subtitle && $category === 'All') {
+            $posts = DB::table('posts')->where('published', 1)->get();
         }
 
         return $posts;

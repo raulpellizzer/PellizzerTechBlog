@@ -182,6 +182,7 @@ class PostController extends Controller
 
             $inputs     = $request->all();
             $data       = $post->filterPosts($inputs);
+
             $data[sizeof($data)] = $categories;
 
             return view('blogindex', ['data' => $data]);
