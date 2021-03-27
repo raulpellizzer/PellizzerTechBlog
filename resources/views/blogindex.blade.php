@@ -1,4 +1,5 @@
-@extends('layouts.base_header')
+{{-- Header --}}
+<x-header/>
 
 {{-- NavBar --}}
 <x-main-nav/>

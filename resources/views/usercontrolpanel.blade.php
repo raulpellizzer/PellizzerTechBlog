@@ -1,4 +1,5 @@
-@extends('layouts.base_header')
+{{-- Header --}}
+<x-header/>
 
 {{-- Main navbar --}}
 <x-main-nav/>
@@ -41,7 +42,6 @@
 @endif
 
 {{-- Grid --}}
-
 <div class="row">
   <div class="col-md-1"></div>
 
