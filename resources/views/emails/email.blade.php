@@ -1,4 +1,5 @@
-@extends('layouts.base_header')
+{{-- Header --}}
+<x-header/>
 
 {{-- Jumbotron --}}
 <x-jumbotron type="email"/><br>
