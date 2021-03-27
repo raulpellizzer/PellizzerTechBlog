@@ -84,6 +84,86 @@ class User extends Authenticatable
     }
 
     /**
+     * Checks if given username already exists in the application by its username
+     *
+     * @param  string  $userName
+     * @return boolean
+     */
+    public function checkUserInDBByName($userName)
+    {
+        $user = DB::select('select name from users where name = :name ', ['name' => $userName]);
+        return sizeof($user) > 0 ? true : false;
+    }
+
+    /**
+     * Update login attempts for given user, if invalid credentials
+     *
+     * @param  string  $userName
+     * @return void
+     */
+    public function updateLoginAttempts($userName)
+    {
+        $user = DB::select('select login_attempts from users where name = :name ', ['name' => $userName]);
+        $loginAttempts = $user[0]->login_attempts + 1;
+        DB::table('users')->where('name', $userName)->update(['login_attempts' => $loginAttempts]);
+    }
+
+    /**
+     * Resets the login attempt counter when successfully loggin in
+     *
+     * @param  string  $userName
+     * @return void
+     */
+    public function resetLoginAttempts($userName)
+    {
+        DB::table('users')->where('name', $userName)->update(['login_attempts' => 0]);
+    }
+
+    /**
+     * Retrieve login attempts for given user
+     *
+     * @param  string  $userName
+     * @return integer
+     */
+    public function getLoginAttempts($userName)
+    {
+        $user = DB::select('select login_attempts from users where name = :name ', ['name' => $userName]);
+        return $user[0]->login_attempts;
+    }
+
+    /**
+     * Retrieve blocked time for a given user
+     *
+     * @param  string  $userName
+     * @return string timestamp
+     */
+    public function getBlockedTime($userName)
+    {
+        $user = DB::select('select blocked_until from users where name = :name ', ['name' => $userName]);
+        return $user[0]->blocked_until;
+    }
+
+    /**
+     * Sets a block time for given username
+     *
+     * @param  string  $userName
+     * @return void
+     */
+    public function setBlockedTime($userName, $blockedDate) {
+        DB::table('users')->where('name', $userName)->update(['blocked_until' => $blockedDate]);
+    }
+
+    /**
+     * Unblocks user
+     *
+     * @param  string  $userName
+     * @return void
+     */
+    public function unblockUser($userName) {
+        DB::table('users')->where('name', $userName)->update(['blocked_until' => NULL, 'login_attempts' => 0]);
+    }
+
+    /**
      * Retrieves all emails from active users
      *
      * @return array

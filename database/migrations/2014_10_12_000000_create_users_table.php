@@ -21,6 +21,8 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+            $table->timestamp('blocked_until', $precision = 0)->nullable();
+            $table->integer('login_attempts')->default(0);
             $table->boolean('active')->default(1);
             $table->boolean('registration_verified')->default(0);
             $table->boolean('isAdmin')->default(0);

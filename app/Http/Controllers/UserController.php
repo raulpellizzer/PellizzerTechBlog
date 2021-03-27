@@ -6,8 +6,9 @@ use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
 use App\Mail\Registration;
+use DateInterval;
+use DateTime;
 use Illuminate\Support\Facades\Mail;
-
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
@@ -63,25 +64,66 @@ class UserController extends Controller
     public function authenticate(Request $request)
     {
         if ($request->method() === "POST") {
-            $request->session()->regenerate();
 
-            $user         = new User;
-            $credentials  = $request->only('name', 'password');
-            $auth         = $user->authenticate($credentials);
+            try {
+                $request->session()->regenerate();
 
-            if ($auth) {
-                $userIsActive      = $user->isUserActive($credentials['name']);
-                $accoutWasVerified = $user->wasAccountVerified($credentials['name']);
+                $user        = new User;
+                $credentials = $request->only('name', 'password');
+                $userExists  = $user->checkUserInDBByName($credentials['name']);
 
-                if ($userIsActive[0]->active) {
-                    if ($accoutWasVerified[0]->registration_verified) 
-                        return redirect()->route('home')->with('authStatus', 'success');
-                    else
-                        return redirect()->route('login')->with('authStatus', 'accountNotVerified');
+                if ($userExists) {
+                    $loginAttempts = $user->getLoginAttempts($credentials['name']);
+
+                    if ($loginAttempts < 4) {
+
+                        $auth = $user->authenticate($credentials);
+                        if ($auth) {
+                            $userIsActive      = $user->isUserActive($credentials['name']);
+                            $accoutWasVerified = $user->wasAccountVerified($credentials['name']);
+
+                            if ($userIsActive[0]->active) {
+
+                                if ($accoutWasVerified[0]->registration_verified) {
+                                    $user->resetLoginAttempts($credentials['name']);
+                                    return redirect()->route('home')->with('authStatus', 'success');
+                                } else
+                                    return redirect()->route('login')->with('authStatus', 'accountNotVerified');
+
+                            } else
+                                return redirect()->route('login')->with('authStatus', 'disabledUser');
+
+                        } else {
+                            $user->updateLoginAttempts($credentials['name']);
+                            return redirect()->route('login')->with('authStatus', 'invalidCredentials');
+                        }
+
+                    } else {
+                        $blockUntil = $user->getBlockedTime($credentials['name']);
+
+                        if ($blockUntil === NULL) {
+                            $dateTime = new DateTime();
+
+                            // Block time: 5 minutes
+                            $dateTime->add(new DateInterval('PT' . 5 . 'M'));
+                            $blockedDate = $dateTime->format('Y-m-d H:i:s');
+                            $user->setBlockedTime($credentials['name'], $blockedDate);
+
+                        } else {
+                            $date = date('Y-m-d H:i:s');
+                            if ($date > $blockUntil)
+                                $user->unblockUser($credentials['name']);
+                        }
+
+                        return redirect()->route('login')->with('authStatus', 'userBlocked');
+                    }
+
                 } else
-                    return redirect()->route('login')->with('authStatus', 'disabledUser');
-            } else
-                return redirect()->route('login')->with('authStatus', 'invalidCredentials');
+                    return redirect()->route('login')->with('authStatus', 'invalidCredentials');
+
+            } catch (Exception $e) {
+                return redirect()->route('login')->with('authStatus', 'errorInOperation');
+            }
         }
     }
 

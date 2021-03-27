@@ -62,6 +62,17 @@
   </div>
 @endif
 
+@if (session('authStatus') === "userBlocked")
+  <div class="container">
+    <div class="alert alert-danger text-center regular-text fade show alert-dismissible" role="alert">
+      You have exceeded the maximum number of attempts. Try again in a few minutes.
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div>
+@endif
+
 {{-- Login Form --}}
 <div class="container-fluid">
     <div class="row justify-content-center align-items-center">
