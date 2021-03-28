@@ -15,7 +15,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@700&display=swap" rel="stylesheet"> 
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Inconsolata:wght@500;700&family=Jura&family=Kavivanar&family=Sanchez&display=swap" rel="stylesheet">
-
     <title>Pellizzer Tech Blog</title>
+    <script data-ad-client="ca-pub-2228239560931736" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 </head>
 <body>
