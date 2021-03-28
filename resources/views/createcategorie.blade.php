@@ -46,7 +46,7 @@
       </div>
 
       <div class="col">
-        <form action="/controlpanel/createcategorie/save" method="POST">
+        <form action="/adminpanel/createcategorie/save" method="POST">
             @csrf
 
             <div class="form-group mt-2">

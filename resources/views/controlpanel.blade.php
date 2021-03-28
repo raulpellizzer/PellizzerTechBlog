@@ -22,11 +22,11 @@
 <div class="container">
     <div class="row text-center">
         <div class="col cpgrid">
-            <a href="{{ url('/controlpanel/manageusers') }}" class="btn btn-secondary stretched-link regular-text"><h2>Manage Users</h2></a>
+            <a href="{{ url('/adminpanel/manageusers') }}" class="btn btn-secondary stretched-link regular-text"><h2>Manage Users</h2></a>
         </div>
 
         <div class="col cpgrid">
-            <a href="{{ url('/controlpanel/manageposts') }}" class="btn btn-secondary stretched-link regular-text"><h2>Manage Posts</h2></a>
+            <a href="{{ url('/adminpanel/manageposts') }}" class="btn btn-secondary stretched-link regular-text"><h2>Manage Posts</h2></a>
         </div>
     </div>
 </div><br>
@@ -34,7 +34,7 @@
 <div class="container">
   <div class="row text-center">
     <div class="col cpgrid">
-      <a href="{{ url('/controlpanel/createcategorie') }}" class="btn btn-secondary stretched-link regular-text"><h2>Create New Categorie</h2></a>
+      <a href="{{ url('/adminpanel/createcategorie') }}" class="btn btn-secondary stretched-link regular-text"><h2>Create New Categorie</h2></a>
     </div>
 
     <div class="col cpgrid"></div>

@@ -58,7 +58,7 @@
       </form>
     </div>
 
-    <form action="{{ url('/controlpanel/manageusers/save') }}" method="POST">
+    <form action="{{ url('/adminpanel/manageusers/save') }}" method="POST">
       @csrf
       <table class="table table-striped table-bordered container" id="usergrid" >
           <thead>

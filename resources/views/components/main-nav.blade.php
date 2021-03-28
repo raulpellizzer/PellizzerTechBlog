@@ -49,7 +49,7 @@
         @if (auth()->user()->isAdmin(Auth::user()->email))
           <ul class="navbar-nav">
             <li class="nav-item m-2 mt-3">
-              <form action="{{ url('/controlpanel') }}" method="GET">
+              <form action="{{ url('/adminpanel') }}" method="GET">
                 <button type="submit" class="btn btn-success btn-sm">Control Panel</button>
               </form>
             </li>

@@ -53,7 +53,7 @@ Route::view('/contact', 'contact')->name('contact')->middleware('auth');
     Render Control Panel View
     Available only for users with admin privileges
 */
-Route::view('/controlpanel', 'controlpanel')->name('controlpanel')->middleware('admin');
+Route::view('/adminpanel', 'controlpanel')->name('controlpanel')->middleware('admin');
 
 
 /*
@@ -138,41 +138,41 @@ Route::get(
 
 
 /*
-    /controlpanel/manageusers: Control Panel for user management
+    /adminpanel/manageusers: Control Panel for user management
     Available only for users with admin privileges
 */
 Route::get(
-    '/controlpanel/manageusers',
+    '/adminpanel/manageusers',
     [ControlPanelController::class, 'cpUserIndex']
     )->name('manageUsers')->middleware('admin');
 
 
 /*
-    /controlpanel/manageposts: Control Panel for posts management
+    /adminpanel/manageposts: Control Panel for posts management
     Available only for users with admin privileges
 */
 Route::get(
-    '/controlpanel/manageposts',
+    '/adminpanel/manageposts',
     [ControlPanelController::class, 'cpPostsIndex']
     )->name('managePosts')->middleware('admin');
 
 
 /*
-    /controlpanel/manageusers/save: Updates data about users
+    /adminpanel/manageusers/save: Updates data about users
     Available only for users with admin privileges
 */
 Route::post(
-    '/controlpanel/manageusers/save',
+    '/adminpanel/manageusers/save',
     [ControlPanelController::class, 'updateUserStatus']
     )->middleware('admin');
 
 
 /*
-    /controlpanel/manageposts/save: Updates data about posts
+    /adminpanel/manageposts/save: Updates data about posts
     Available only for users with admin privileges
 */
 Route::post(
-    '/controlpanel/manageposts/save',
+    '/adminpanel/manageposts/save',
     [ControlPanelController::class, 'updatePostStatus']
     )->middleware('admin');
 
@@ -181,7 +181,7 @@ Route::post(
     /blog route: Edit data about specific post
 */
 Route::get(
-    '/controlpanel/manageposts/edit/{postId}',
+    '/adminpanel/manageposts/edit/{postId}',
     [PostController::class, 'edit']
     )->name('editPost')->middleware('admin');
 
@@ -197,21 +197,21 @@ Route::post(
 
 
 /*
-    /pcontrolpanel/createcategorie: Shows the form for creating a new categorie
+    /adminpanel/createcategorie: Shows the form for creating a new categorie
     Available only for users with admin privileges
 */
 Route::get(
-    '/controlpanel/createcategorie',
+    '/adminpanel/createcategorie',
     [CategorieController::class, 'create']
     )->name('createCategorie')->middleware('admin');
 
 
 /*
-    /controlpanel/createcategorie/save: Create a new categorie
+    /adminpanel/createcategorie/save: Create a new categorie
     Available only for users with admin privileges
 */
 Route::post(
-    '/controlpanel/createcategorie/save',
+    '/adminpanel/createcategorie/save',
     [CategorieController::class, 'store']
     )->middleware('admin');
 

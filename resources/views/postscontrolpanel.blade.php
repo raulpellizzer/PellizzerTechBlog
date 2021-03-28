@@ -68,7 +68,7 @@
           <input class="form-control mr-sm-2 ml-4 regular-text" type="search" id="postsearch" name="postsearch" placeholder="Title" onkeyup="searchPost()" aria-label="Search">
       </form>
     </div>
-    <form action="{{ url('/controlpanel/manageposts/save') }}" method="POST">
+    <form action="{{ url('/adminpanel/manageposts/save') }}" method="POST">
       @csrf
       <table class="table table-striped table-bordered container" id="postgrid" >
           <thead>
@@ -85,7 +85,7 @@
   
               @foreach ($data as $post)
                   <tr>
-                      <td class="regular-text"><a href="{{ url('/controlpanel/manageposts/edit') }}/<?php echo $post->id ?>" class="btn btn-secondary btn-md active" role="button" aria-pressed="true">Edit</a></td>
+                      <td class="regular-text"><a href="{{ url('/adminpanel/manageposts/edit') }}/<?php echo $post->id ?>" class="btn btn-secondary btn-md active" role="button" aria-pressed="true">Edit</a></td>
                       <th class="main-header-text" scope="row"> <?php echo $post->id ?> </th>
                       <td class="regular-text"> <?php echo $post->title ?> </td>
                       <td class="regular-text"> <?php echo $post->subtitle ?> </td>
