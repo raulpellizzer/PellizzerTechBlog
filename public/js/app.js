@@ -49,3 +49,13 @@ function searchPost()
     }
   }
 }
+
+// View post preview in post creation
+function setPreview()
+{
+  document.getElementById('categoryPreview').innerText = "Category: ".concat(document.getElementById('category').value);
+  document.getElementById('titlePreview').innerText    = "#000 ".concat(document.getElementById('title').value);
+  document.getElementById('subtitlePreview').innerText = document.getElementById('subtitle').value;
+  document.getElementById('bodyPreview').innerHTML     = document.getElementById('bodycontent').value;
+  document.getElementById('authorPreview').innerText   = "Author: ".concat(document.getElementById('author').value);
+}

@@ -103,6 +103,26 @@
                   <button type="submit" class="btn btn-primary regular-text">Post</button>
               </div>
             </form>
+
+            <div class="d-flex justify-content-center mt-3">
+              <button type="button" class="btn btn-dark" onclick="setPreview()">Check Preview</button>
+            </div>
+            <br><hr class="hr-customized"><br>
+
+            {{-- Preview --}}
+            <div class="container">
+              <p class="regular-text float-left custom-margin-left" id="categoryPreview"></strong></p>
+            </div><br><br>
+            
+            <div class="container text-center justify-content-center align-items-center">
+                <h1 class="display-4 main-header-text" id="titlePreview"></h1><br>
+                <p class="lead regular-text" id="subtitlePreview"></p>
+                <p class="regular-text" id="bodyPreview"></p>
+            </div>
+            
+            <div class="container">
+                <p class="regular-text float-right" id="authorPreview"></strong></p>
+            </div>
         </div>
     </div>
 </div>
