@@ -94,7 +94,13 @@ class PostController extends Controller
         try {
             $post     = new Post;
             $data = $post->getPostData($id);
-            return view('post', ['data' => $data]);
+
+            if (sizeof($data)) {
+                if ($data[0]->published) 
+                    return view('post', ['data' => $data]);
+                else
+                    return redirect()->route('blogIndex')->with('viewPosts', 'postNotFound');
+            }
 
         } catch (Exception $e) {
             session(['errorMessage' => $e->getMessage()]);
