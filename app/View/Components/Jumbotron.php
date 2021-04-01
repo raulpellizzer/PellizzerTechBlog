@@ -30,8 +30,8 @@ class Jumbotron extends Component
     {
         if ($this->type == "home") {
             $this->display      = "Web Security in " . date('Y') . " and Web Development";
-            $this->paragraphOne = "Tips and drills on how to be more secure in the digital era when working on the internet and on devices in general";
-            $this->paragraphTwo = "Are you a web developer? This is also for you! Check our blogs for security and development themes"; 
+            $this->paragraphOne = "Tutorials, security tips, how-to's, best practices, vulnerability analysis and development in general";
+            $this->paragraphTwo = "Want to learn new, cool things to use in your application? Join us and stay safe!"; 
 
         } else if ($this->type === "contact") {
             $this->display      = "Contact Us";
