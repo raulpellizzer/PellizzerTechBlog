@@ -12,7 +12,8 @@
 
 <div class="container text-center justify-content-center align-items-center">
     <h1 class="display-4 main-header-text"> <?php echo "#" . $data[0]->id . " " . $data[0]->title; ?> </h1><br>
-    <p class="lead regular-text"> <?php echo $data[0]->subtitle; ?> </p>
+    <h3 class="regular-text"> <?php echo $data[0]->subtitle; ?> </h3>
+    <br>
     <p class="regular-text"> <?php echo $data[0]->content; ?> </p>
 </div>
 

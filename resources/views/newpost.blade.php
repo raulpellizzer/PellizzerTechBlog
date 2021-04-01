@@ -116,7 +116,8 @@
             
             <div class="container text-center justify-content-center align-items-center">
                 <h1 class="display-4 main-header-text" id="titlePreview"></h1><br>
-                <p class="lead regular-text" id="subtitlePreview"></p>
+                <h3 class="regular-text" id="subtitlePreview"></h3>
+                <br>
                 <p class="regular-text" id="bodyPreview"></p>
             </div>
             
