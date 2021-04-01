@@ -121,7 +121,9 @@ Route::get(
     )->name('blogIndex');
 
 
-// Implement post filter here
+/*
+    /blog route with filters
+*/
 Route::post(
     '/blog',
     [PostController::class, 'filter']
