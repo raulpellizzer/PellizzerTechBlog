@@ -59,3 +59,12 @@ function setPreview()
   document.getElementById('bodyPreview').innerHTML     = document.getElementById('bodycontent').value;
   document.getElementById('authorPreview').innerText   = "Author: ".concat(document.getElementById('author').value);
 }
+
+// Adds a code section to the body of the post
+function addCode()
+{
+  var currentBody      = document.getElementById('bodycontent').value;
+  var codeSection      = document.getElementById('codesection').value;
+  var builtCodeSection = "<br><br><div class='container code-area'><p class='code-text'>" + codeSection + "</p></div><br><br>";
+  document.getElementById('bodycontent').value = currentBody + builtCodeSection;
+}

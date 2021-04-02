@@ -82,3 +82,14 @@ textarea {
     white-space: pre-wrap;
     overflow-wrap: break-word;
 }
+
+.code-area {
+    background-color: rgb(248, 245, 245);
+    width: fit-content;
+    height: fit-content;
+}
+
+.code-text {
+    white-space: pre;
+    text-align: left;
+}
