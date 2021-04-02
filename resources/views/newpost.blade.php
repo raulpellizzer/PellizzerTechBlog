@@ -59,6 +59,7 @@
             <form action="{{ url('/posts/new/create') }}" method="POST">
               @csrf
 
+              {{-- Title --}}
               <div class="form-group row">
                 <div class="col-sm-10">
                     <label for="title" class="col-form-label regular-text">Title</label>
@@ -66,6 +67,7 @@
                 </div>
               </div>
 
+              {{-- Subtitle --}}
               <div class="form-group row">
                 <div class="col-sm-10">
                     <label for="subtitle" class="col-form-label regular-text">Subtitle</label>
@@ -73,12 +75,21 @@
                 </div>
               </div>
 
+              {{-- Body --}}
               <div class="form-group row mt-5 little-margin-left">
                 <label for="bodycontent">Body</label>
                 <textarea class="form-control" name="bodycontent" id="bodycontent" rows="3" maxlength="65535" required></textarea>
                 <p class="regular-text">Characters left: </p> <span class="little-margin-left" id="charactersleft">65535</span>
               </div>
 
+              {{-- Code Section --}}
+              <div class="form-group row mt-5 little-margin-left">
+                <label for="codesection">Code Section</label>
+                <textarea class="form-control" name="codesection" id="codesection" rows="3"></textarea>
+                <button type="button" class="btn btn-dark mt-2" onclick="addCode()">Add Code</button>
+              </div>
+
+              {{-- Author --}}
               <div class="form-group row">
                 <div class="col-sm-10">
                     <label for="author" class="col-form-label regular-text">Author</label>
@@ -86,6 +97,7 @@
                 </div>
               </div>
 
+              {{-- Category --}}
               <div class="form-group row regular-text little-margin-left">
                 <div>
                     <label class="col-form-label regular-text" for="category">Choose a category for this post</label>
