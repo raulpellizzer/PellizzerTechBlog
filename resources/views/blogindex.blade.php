@@ -30,6 +30,17 @@
   </div>
 @endif
 
+@if (session('viewPosts') === "postDoesntExit")
+  <div class="container">
+    <div class="alert alert-danger text-center regular-text fade show alert-dismissible" role="alert">
+      Whoops! Looks like the requested post doesn't exist or was not found
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div>
+@endif
+
 <div class="d-flex justify-content-center">
   <h5 class="main-header-text lead">Optimize your search</h5>
 </div>

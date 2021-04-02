@@ -100,7 +100,8 @@ class PostController extends Controller
                     return view('post', ['data' => $data]);
                 else
                     return redirect()->route('blogIndex')->with('viewPosts', 'postNotFound');
-            }
+            } else
+                return redirect()->route('blogIndex')->with('viewPosts', 'postDoesntExit');
 
         } catch (Exception $e) {
             session(['errorMessage' => $e->getMessage()]);
