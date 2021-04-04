@@ -43,7 +43,7 @@ class Post extends Model
      */
     public function getPublishedPosts()
     {
-        $posts = DB::select('select * from posts where published = 1');
+        $posts = DB::select('select * from posts where published = 1 order by id desc');
         return $posts;
     }
 
