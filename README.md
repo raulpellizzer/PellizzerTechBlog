@@ -6,7 +6,7 @@
 
 <br><br>
 
-# Link: Available Soon
+# Link: https://www.pellizzertechblog.com/
 
 <br>
 
