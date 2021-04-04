@@ -130,6 +130,7 @@ class Post extends Model
                 ->where('title', 'like', '%' . $title . '%')
                 ->where('subtitle', 'like', '%' . $subtitle . '%')
                 ->where('category', $category)
+                ->orderBy('id', 'desc')
                 ->get();
 
 
@@ -137,6 +138,7 @@ class Post extends Model
             $posts = DB::table('posts')
                 ->where('subtitle', 'like', '%' . $subtitle . '%')
                 ->where('category', $category)
+                ->orderBy('id', 'desc')
                 ->get();
 
 
@@ -144,12 +146,14 @@ class Post extends Model
             $posts = DB::table('posts')
                 ->where('title', 'like', '%' . $title . '%')
                 ->where('category', $category)
+                ->orderBy('id', 'desc')
                 ->get();
 
 
         } else if (!$title && !$subtitle && $category != 'All') {
             $posts = DB::table('posts')
                 ->where('category', $category)
+                ->orderBy('id', 'desc')
                 ->get();
 
 
@@ -157,23 +161,29 @@ class Post extends Model
             $posts = DB::table('posts')
                 ->where('title', 'like', '%' . $title . '%')
                 ->where('subtitle', 'like', '%' . $subtitle . '%')
+                ->orderBy('id', 'desc')
                 ->get();
 
 
         } else if (!$title && $subtitle && $category === 'All') {
             $posts = DB::table('posts')
                 ->where('subtitle', 'like', '%' . $subtitle . '%')
+                ->orderBy('id', 'desc')
                 ->get();
 
 
         } else if ($title && !$subtitle && $category === 'All') {
             $posts = DB::table('posts')
                 ->where('title', 'like', '%' . $title . '%')
+                ->orderBy('id', 'desc')
                 ->get();
 
 
         } else if (!$title && !$subtitle && $category === 'All') {
-            $posts = DB::table('posts')->where('published', 1)->get();
+            $posts = DB::table('posts')
+                ->where('published', 1)
+                ->orderBy('id', 'desc')
+                ->get();
         }
 
         return $posts;
