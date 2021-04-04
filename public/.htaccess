@@ -18,4 +18,12 @@
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
+
+    RewriteCond %{SERVER_PORT} 80
+    RewriteRule ^(.*)$ https://pellizzertechblog.com/$1 [R,L]
+
+</IfModule>
+
+<IfModule mime_module>
+    AddHandler application/x-httpd-ea-php74 .php .php7 .phtml
 </IfModule>
