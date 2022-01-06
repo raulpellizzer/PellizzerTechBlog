@@ -169,9 +169,18 @@ class UserController extends Controller
     public function delete(Request $request, $id)
     {
         try {
-            User::destroy($id);
-            $this->logout($request);
-            return redirect()->route('home')->with('userStatus', 'deleted');
+
+            $currentAuthUserName = Auth::user()->name;
+            $userNameBasedOnId   = User::find($id)->name;
+            
+            if ($currentAuthUserName === $userNameBasedOnId) {
+                User::destroy($id);
+                $this->logout($request);
+                return redirect()->route('home')->with('userStatus', 'deleted');
+
+            } else
+                return redirect()->route('home')->with('userStatus', 'errorInOperation');
+
         } catch (Exception $e) {
             return redirect()->route('home')->with('userStatus', 'errorInOperation');
         }

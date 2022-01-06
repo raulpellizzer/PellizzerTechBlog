@@ -1,4 +1,10 @@
 
+  {{-- Cookie Notice --}}
+  <?php
+  $cookie_name = "cookiesAccepted";
+  if(!isset($_COOKIE[$cookie_name])) { ?>
+    <x-cookie-notice/>
+  <?php } ?>
 
   <br>
   <footer class="text-center">

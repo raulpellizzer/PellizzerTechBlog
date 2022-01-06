@@ -8,6 +8,12 @@ $('#bodycontent').keyup(function() {
     $('#charactersleft').text(charactersLeft);
 });
 
+// Cookie agreed action
+$('#cookie-button-agreed').click(function () {
+  $(".cookie-notice").remove();
+  document.cookie = "cookiesAccepted=Yes";
+});
+
 // Search for user in the user control panel
 function searchUser()
 {
