@@ -29,7 +29,7 @@ class Jumbotron extends Component
     public function setVariables()
     {
         if ($this->type == "home") {
-            $this->display      = "Web Security in " . date('Y') . " and Web Development";
+            $this->display      = "Security in " . date('Y') . " and Web/Mobile Development";
             $this->paragraphOne = "Tutorials, security tips, how-to's, best practices, vulnerability analysis and development in general";
             $this->paragraphTwo = "Want to learn new, cool things to use in your application? Join us and stay safe!"; 
 
