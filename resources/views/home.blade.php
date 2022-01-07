@@ -1,5 +1,5 @@
 {{-- Header --}}
-<x-header/>
+<x-headerwithads/>
 
 {{-- Main navbar --}}
 <x-main-nav/>
